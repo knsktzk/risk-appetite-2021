@@ -572,6 +572,7 @@ if cBox_check ==1:
     if red_balls_num !=0:
         st.header("赤い玉の数は「　" + str(red_balls_num) + "　」個となりました。")
         st.sidebar.write("赤い玉の数: " + str(red_balls_num) + " 個")
+        st.sidebar.write("---------------------------")
 
         space()
 
