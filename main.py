@@ -445,7 +445,7 @@ st.sidebar.write("被験者番号: " + user_ID)
 
 user_name = st.text_input("名前を入力してください")
 st.sidebar.write("被験者氏名: " + user_name)
-st.sidebar.write("---------------------------")
+#st.sidebar.write("---------------------------")
 space()
 
 ### dice contents ###
