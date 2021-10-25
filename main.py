@@ -425,7 +425,7 @@ def space():
         st.write("")
 
 ############################## contents ##############################
-cBox_check = 0
+cBox_check = 1
 
 #img = Image.open('image_01.png')
 #st.image(img, use_column_width=True)
@@ -447,57 +447,6 @@ user_name = st.text_input("名前を入力してください")
 st.sidebar.write("被験者氏名: " + user_name)
 st.sidebar.write("---------------------------")
 space()
-
-
-## 本番
-st.header("【謝礼金の対象となる質問の決定　第一部】")
-
-space()
-
-if 'exp01' not in st.session_state:
-    st.session_state.exp01 = 0
-
-exp01_buttom = st.button('決定（第一部）')
-
-if exp01_buttom and st.session_state.exp01 == 0:
-    st.session_state.exp01 = selection()
-
-main(st.session_state.exp01)
-space()
-
-## 本番
-st.header("【謝礼金の対象となる質問の決定　第二部】")
-st.write("※エラーが表示される場合がありますが，実験において問題ないため気にせず進めてください．")
-space()
-
-a = 0
-b = 0
-
-if 'exp02' not in st.session_state:
-    st.session_state.exp02 = 0
-
-if 'exp02_box' not in st.session_state:
-    st.session_state.exp02_box = 0
-
-exp02_switch = st.button('決定（第二部）')
-
-if exp02_switch and st.session_state.exp02 == 0:
-    st.session_state.exp02 = selection_02()
-    a +=1
-
-if exp02_switch and st.session_state.exp02_box == 0:
-    st.session_state.exp02_box = select_box(st.session_state.exp02)
-    b +=1
-
-main_02(st.session_state.exp02, st.session_state.exp02_box)
-
-
-space()
-
-#if cBox_check ==1:
-    #st.write("あなたの謝礼金額の決定には，箱Cを作成する必要があります．")
-    #st.write("リンク先へ進んで，箱C作成へ進んでください．https://share.streamlit.io/kt0zuka/dice/main.py")
-
 
 ### dice contents ###
 
@@ -628,3 +577,55 @@ if cBox_check ==1:
 
         st.write("以上で赤い玉の数を決める作業は終了です。")
         st.write("実験者に赤い玉の数を伝え、謝礼金額の決定に進んで下さい。")
+
+## 本番
+st.header("【謝礼金の対象となる質問の決定　第一部】")
+
+space()
+
+if 'exp01' not in st.session_state:
+    st.session_state.exp01 = 0
+
+exp01_buttom = st.button('決定（第一部）')
+
+if exp01_buttom and st.session_state.exp01 == 0:
+    st.session_state.exp01 = selection()
+
+main(st.session_state.exp01)
+space()
+
+## 本番
+st.header("【謝礼金の対象となる質問の決定　第二部】")
+st.write("※エラーが表示される場合がありますが，実験において問題ないため気にせず進めてください．")
+space()
+
+a = 0
+b = 0
+
+if 'exp02' not in st.session_state:
+    st.session_state.exp02 = 0
+
+if 'exp02_box' not in st.session_state:
+    st.session_state.exp02_box = 0
+
+exp02_switch = st.button('決定（第二部）')
+
+if exp02_switch and st.session_state.exp02 == 0:
+    st.session_state.exp02 = selection_02()
+    a +=1
+
+if exp02_switch and st.session_state.exp02_box == 0:
+    st.session_state.exp02_box = select_box(st.session_state.exp02)
+    b +=1
+
+main_02(st.session_state.exp02, st.session_state.exp02_box)
+
+
+space()
+
+#if cBox_check ==1:
+    #st.write("あなたの謝礼金額の決定には，箱Cを作成する必要があります．")
+    #st.write("リンク先へ進んで，箱C作成へ進んでください．https://share.streamlit.io/kt0zuka/dice/main.py")
+
+
+
