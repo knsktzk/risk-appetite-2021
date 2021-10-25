@@ -436,6 +436,7 @@ space()
 ## 練習ページへのリンク
 st.header("【練習ページへのリンク】")
 st.write("https://share.streamlit.io/kt0zuka/train-risk_appetite-2021/main/main.py")
+st.write("")
 
 ## 被験者情報の入力
 st.header("【被験者情報の入力】")
