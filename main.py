@@ -435,11 +435,7 @@ space()
 
 ## 練習ページへのリンク
 st.header("【練習ページへのリンク】")
-st.write("謝礼金の対象となる質問の決定 第一部&第二部")
-st.write("URL")
-st.write("箱C1~C3の作成")
-st.write("https://share.streamlit.io/kt0zuka/train-dice/main/main.py")
-st.write("")
+st.write("https://share.streamlit.io/kt0zuka/train-risk_appetite-2021/main/main.py")
 
 ## 被験者情報の入力
 st.header("【被験者情報の入力】")
