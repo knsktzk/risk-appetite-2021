@@ -693,7 +693,7 @@ st.write("")
 
 ## 被験者情報の入力
 st.header("【被験者情報の入力】")
-user_ID = st.text_input("被験者番号を入力してください")
+user_ID = st.text_input("被験者番号を入力してください (半角数字)")
 st.sidebar.write("被験者番号: " + user_ID)
 
 user_name = st.text_input("名前を入力してください")
