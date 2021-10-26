@@ -893,10 +893,12 @@ if cBox_check ==1:
 space()
 #データ入力
 st.header("【データの出力】")
+st.subheader("1. 第一部の回答の入力")
 st.write("第一部で選ばれた問題は {your_01} でした.".format(your_01 = your_01))
 yourchoice_01 = st.text_input("問題番号 {your_01} であなたが選択した回答を教えてください.（全角カタカナ） ".format(your_01 = your_01))
 space()
 
+st.subheader("2. 玉の色の入力")
 st.write("箱C1~C3から取り出した玉の色を教えてください")
 ball_color = st.checkbox("取り出した玉の色が「　赤　」の場合チェックを入れてください")
 color = "blue"
@@ -945,11 +947,13 @@ def calc02(Q_num, ball_color):
         return your_A_price + your_B_price[1] + your_C_price[1]
 
 space()
+st.subheader("3. 謝礼金額の確認")
 reward_on = st.button("謝礼金額を確認する")
 if reward_on:
     your_reward_01 = calc01(yourchoice_01, ball_color)
     your_reward_02 = int(calc02(your_02, ball_color))
     your_reward_sum = int(your_reward_01 + your_reward_02)
+    st.write("以下があなたの謝礼金額です. ")
     st.write("第一部の謝礼金：{n} 円".format( n = your_reward_01))
     st.write("第二部の謝礼金：{n} 円".format(n = your_reward_02))
     st.write("謝礼金の合計金額：{n} 円".format( n = your_reward_sum))
@@ -957,7 +961,7 @@ if reward_on:
 
 def convert_df(df):
     # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv().encode('utf-8')
+    return df.to_csv(encoding = "shift-jis", index=False,)
 
 
 
@@ -1002,8 +1006,13 @@ my_large_df = pd.DataFrame({
 csv = convert_df(my_large_df)
 #st.write(my_large_df)
 space()
+st.subheader("4. 実験結果データのダウンロード")
+st.write("以下のボタンを押して実験結果データをダウンロードしてください. ")
+st.write("ダウンロードしたデータの扱いについては, 実験者の指示に従ってください. ")
+st.write("!!注意!! ダウンロードの前に被験者番号が正しく入力されているか確認して下さい. ダウンロードされるファイル名には被験者番号が印字されます. ")
+
 st.download_button(
-    label="Download data as CSV",
+    label="実験データをダウンロード",
     data=csv,
     file_name='data_{user_ID}.csv'.format(user_ID = user_ID),
     mime='text/csv',)
