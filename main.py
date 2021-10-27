@@ -1269,7 +1269,7 @@ my_large_df = pd.DataFrame({
                     'boxc_dice_num_02': [yourdice_num_02],
                     'boxc_dice_face_02': [yourdice_face_02],
                     'red_balls_01': [red_balls_num_01],
-                    'blue_balls_01': [blue_balls_num_01],]
+                    'blue_balls_01': [blue_balls_num_01],
                     'red_balls_02': [red_balls_num_02],
                     'blue_balls_02': [blue_balls_num_02],
                     'question_01': [your_01],
