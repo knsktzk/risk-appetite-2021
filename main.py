@@ -900,10 +900,14 @@ space()
 
 st.subheader("2. 玉の色の入力")
 st.write("箱C1~C3から取り出した玉の色を教えてください")
-ball_color = st.checkbox("取り出した玉の色が「　赤　」の場合チェックを入れてください")
-color = "blue"
-if ball_color:
-    color = "red"
+ball_color_01 = st.checkbox("第一部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
+ball_color_02 = st.checkbox("第二部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
+color_01 = "blue"
+color_02 = "blue"
+if ball_color_01:
+    color_01 = "red"
+if ball_color_02:
+    color_02 = "red"
 
 def calc01(yourchoice_01, ball_color):
     if yourchoice_01 == "イ" or yourchoice_01 == "エ" or yourchoice_01 == "カ":
@@ -950,8 +954,8 @@ space()
 st.subheader("3. 謝礼金額の確認")
 reward_on = st.button("謝礼金額を確認する")
 if reward_on:
-    your_reward_01 = calc01(yourchoice_01, ball_color)
-    your_reward_02 = int(calc02(your_02, ball_color))
+    your_reward_01 = calc01(yourchoice_01, ball_color_01)
+    your_reward_02 = int(calc02(your_02, ball_color_02))
     your_reward_sum = int(your_reward_01 + your_reward_02)
     st.write("以下があなたの謝礼金額です. ")
     st.write("第一部の謝礼金：{n} 円".format( n = your_reward_01))
@@ -971,7 +975,8 @@ my_large_df = pd.DataFrame({
                     'dice_face': [yourdice_face],
                     'red_balls': [red_balls_num],
                     'blue_balls': [blue_balls_num],
-                    'ball_color': [color],
+                    'ball_color_01': [color_01],
+                    'ball_color_02': [color_02],
                     'question_01': [your_01],
                     'choice_01': [yourchoice_01],
                     'box_a': [yourbox_A],
