@@ -902,12 +902,16 @@ st.subheader("2. 玉の色の入力")
 st.write("箱C1~C3から取り出した玉の色を教えてください")
 ball_color_01 = st.checkbox("第一部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
 ball_color_02 = st.checkbox("第二部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
+no_boxC = st.checkbox("箱C1~C3を使用しなかった場合チェックを入れてください")
 color_01 = "blue"
 color_02 = "blue"
 if ball_color_01:
     color_01 = "red"
 if ball_color_02:
     color_02 = "red"
+if no_boxC:
+    color_01 = ""
+    color_02 = ""
 
 def calc01(yourchoice_01, ball_color):
     if yourchoice_01 == "イ" or yourchoice_01 == "エ" or yourchoice_01 == "カ":
