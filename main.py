@@ -188,7 +188,7 @@ def question_AB(Q_num, Q_data, dic):
     a_blue = num * stock_B_blue
     i = dic[Q_num] * stock_A
 
-    st.write("あなたの回答は  {left_choice} の場合】".format(left_choice = your_choice))
+    st.write("あなたの回答は  {left_choice} の場合】".format(left_choice = Q_data[3]))
     st.write("箱B{box_num}から玉を一つ取り出します．".format(box_num = Q_data[2]))
     st.write("赤の玉出た場合の謝礼金： {a_red} 円".format(a_red = a_red))
     st.write("青の玉出た場合の謝礼金： {a_blue} 円".format(a_blue = a_blue))
