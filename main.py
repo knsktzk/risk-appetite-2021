@@ -810,21 +810,21 @@ if cBox_check_01 ==1:
     st.subheader("1. 振るサイコロの数を決める")
 
 
-    if 'dice_num' not in st.session_state:
-        st.session_state.dice_num = 0
+    if 'dice_num_01' not in st.session_state:
+        st.session_state.dice_num_01 = 0
 
     dice_num_button = st.button('（第一部）サイコロの数の決定')
 
-    if dice_num_button and st.session_state.dice_num == 0:
+    if dice_num_button and st.session_state.dice_num_01 == 0:
 
-        st.session_state.dice_num = dice(6)
+        st.session_state.dice_num_01 = dice(6)
 
-    st.image('6dice_{num}.png'.format( num = st.session_state.dice_num ) )
+    st.image('6dice_{num}.png'.format( num = st.session_state.dice_num_01 ) )
 
-    st.write("出目は「　" + str(st.session_state.dice_num) + "　」でした。")
-    st.write("あなたが振るサイコロの数は「　" + str(st.session_state.dice_num) + "　」個です。")
-    st.sidebar.write("サイコロの数：" + str(st.session_state.dice_num) + " 個")
-    yourdice_num_01 = st.session_state.dice_num
+    st.write("出目は「　" + str(st.session_state.dice_num_01) + "　」でした。")
+    st.write("あなたが振るサイコロの数は「　" + str(st.session_state.dice_num_01) + "　」個です。")
+    st.sidebar.write("サイコロの数：" + str(st.session_state.dice_num_01) + " 個")
+    yourdice_num_01 = st.session_state.dice_num_01
     #dl_table_on += 1
 
     space()
@@ -835,64 +835,64 @@ if cBox_check_01 ==1:
     face_list = [4, 6, 8, 10, 12, 24, 30, 100]
     face_dic = {0:0, 4:1, 6:2, 8:3, 10:4, 12:5, 24:6, 30:7, 100:8}
 
-    if 'face_num' not in st.session_state:
-        st.session_state.face_num = 0
+    if 'face_num_01' not in st.session_state:
+        st.session_state.face_num_01 = 0
 
     face_num_button = st.button('（第一部）サイコロの面体の決定')
 
-    if face_num_button and st.session_state.face_num == 0:
+    if face_num_button and st.session_state.face_num_01 == 0:
 
-        st.session_state.face_num = random.choice( face_list )
+        st.session_state.face_num_01 = random.choice( face_list )
 
-    st.image('8dice_{num}.png'.format( num = face_dic[st.session_state.face_num] ) )
+    st.image('8dice_{num}.png'.format( num = face_dic[st.session_state.face_num_01] ) )
 
-    st.write("出目は「　" + str(face_dic[st.session_state.face_num]) + "　」でした。")
-    st.write("出目が「　" + str(face_dic[st.session_state.face_num]) + "　」なので、サイコロの種類は「　" + str(st.session_state.face_num) + "　」面体です。")
-    st.sidebar.write("サイコロの種類： " + str(st.session_state.face_num) + " 面体")
+    st.write("出目は「　" + str(face_dic[st.session_state.face_num_01]) + "　」でした。")
+    st.write("出目が「　" + str(face_dic[st.session_state.face_num_01]) + "　」なので、サイコロの種類は「　" + str(st.session_state.face_num_01) + "　」面体です。")
+    st.sidebar.write("サイコロの種類： " + str(st.session_state.face_num_01) + " 面体")
 
     st.write("")
 
-    st.write("あなたは「　 {face}　」 面体サイコロを「　 {dice}　」 回振ることになりました。".format( dice = st.session_state.dice_num, face =st.session_state.face_num))
-    yourdice_face_01 = st.session_state.face_num
+    st.write("あなたは「　 {face}　」 面体サイコロを「　 {dice}　」 回振ることになりました。".format( dice = st.session_state.dice_num_01, face =st.session_state.face_num_01))
+    yourdice_face_01 = st.session_state.face_num_01
     #dl_table_on += 1
     space()
 
     ## 3. 被験者が謝礼金決定に用いる赤玉の数を決める -----------------------------------------------------------------------------------------
     st.subheader("3. 被験者が謝礼金決定に用いる赤玉の数を決める")
-    st.write("ボタンを押すと {face} 面体サイコロを {dice} 個振ることができます。".format( dice = st.session_state.dice_num, face =st.session_state.face_num))
+    st.write("ボタンを押すと {face} 面体サイコロを {dice} 個振ることができます。".format( dice = st.session_state.dice_num_01, face =st.session_state.face_num_01))
 
 
-    if 'sum_value' not in st.session_state:
+    if 'sum_value_01' not in st.session_state:
         st.session_state.sum_value = 0
 
     sum_value_button = st.button('（第一部）赤い玉の決定')
 
-    if sum_value_button and st.session_state.sum_value == 0:
+    if sum_value_button and st.session_state.sum_value_01 == 0:
         st.write("")
 
-        for i in range(st.session_state.dice_num):
-            a = dice(st.session_state.face_num)
+        for i in range(st.session_state.dice_num_01):
+            a = dice(st.session_state.face_num_01)
             your_sum += a
             st.write("{i} 個目：　出目は「　{a}　」でした。　現在の合計は「　{your_sum}　」です。".format( i = i+1, a=a, your_sum = your_sum ))
             time.sleep(0.5)
-            if i == (st.session_state.dice_num - 1):
+            if i == (st.session_state.dice_num_01 - 1):
                 st.write("全てのサイコロを振り終わりました。")
 
-        st.session_state.sum_value = your_sum
+        st.session_state.sum_value_01 = your_sum
         st.write("")
 
-        st.write("{face} 面体サイコロを {dice} 個振った結果、出目の合計は「　".format( dice = st.session_state.dice_num, face =st.session_state.face_num) + str(st.session_state.sum_value)+ "　」でした。")
+        st.write("{face} 面体サイコロを {dice} 個振った結果、出目の合計は「　".format( dice = st.session_state.dice_num_01, face =st.session_state.face_num_01) + str(st.session_state.sum_value_01)+ "　」でした。")
         st.write("謝礼金を決定するために用いる赤い玉の数を算出します。")
         time.sleep(1.0)
     space()
 
-    red_balls_num = get_value( st.session_state.sum_value )
+    red_balls_num_01 = get_value( st.session_state.sum_value_01 )
 
-    if red_balls_num !=0:
-        st.header("赤い玉の数は「　" + str(red_balls_num) + "　」個となりました。")
-        st.sidebar.write("赤い玉の数: " + str(red_balls_num) + " 個")
+    if red_balls_num_01 !=0:
+        st.header("赤い玉の数は「　" + str(red_balls_num_01) + "　」個となりました。")
+        st.sidebar.write("赤い玉の数: " + str(red_balls_num_01) + " 個")
         st.sidebar.write("---------------------------")
-        blue_balls_num = 100 - get_value(st.session_state.sum_value)
+        blue_balls_num_01 = 100 - get_value(st.session_state.sum_value_01)
 
         st.write("以上で赤い玉の数を決める作業は終了です。")
         st.write("実験者に赤い玉の数を伝え、謝礼金額の決定に進んで下さい。")
@@ -941,21 +941,21 @@ if cBox_check_02 ==1:
     st.subheader("1. 振るサイコロの数を決める")
 
 
-    if 'dice_num' not in st.session_state:
-        st.session_state.dice_num = 0
+    if 'dice_num_02' not in st.session_state:
+        st.session_state.dice_num_02 = 0
 
     dice_num_button = st.button('（第二部）サイコロの数の決定')
 
-    if dice_num_button and st.session_state.dice_num == 0:
+    if dice_num_button and st.session_state.dice_num_02 == 0:
 
-        st.session_state.dice_num = dice(6)
+        st.session_state.dice_num_02 = dice(6)
 
-    st.image('6dice_{num}.png'.format( num = st.session_state.dice_num ) )
+    st.image('6dice_{num}.png'.format( num = st.session_state.dice_num_02 ) )
 
-    st.write("出目は「　" + str(st.session_state.dice_num) + "　」でした。")
-    st.write("あなたが振るサイコロの数は「　" + str(st.session_state.dice_num) + "　」個です。")
-    st.sidebar.write("サイコロの数：" + str(st.session_state.dice_num) + " 個")
-    yourdice_num_02 = st.session_state.dice_num
+    st.write("出目は「　" + str(st.session_state.dice_num_02) + "　」でした。")
+    st.write("あなたが振るサイコロの数は「　" + str(st.session_state.dice_num_02) + "　」個です。")
+    st.sidebar.write("サイコロの数：" + str(st.session_state.dice_num_02) + " 個")
+    yourdice_num_02 = st.session_state.dice_num_02
     #dl_table_on += 1
 
     space()
@@ -966,64 +966,64 @@ if cBox_check_02 ==1:
     face_list = [4, 6, 8, 10, 12, 24, 30, 100]
     face_dic = {0:0, 4:1, 6:2, 8:3, 10:4, 12:5, 24:6, 30:7, 100:8}
 
-    if 'face_num' not in st.session_state:
-        st.session_state.face_num = 0
+    if 'face_num_02' not in st.session_state:
+        st.session_state.face_num_02 = 0
 
     face_num_button = st.button('（第二部）サイコロの面体の決定')
 
-    if face_num_button and st.session_state.face_num == 0:
+    if face_num_button and st.session_state.face_num_02 == 0:
 
-        st.session_state.face_num = random.choice( face_list )
+        st.session_state.face_num_02 = random.choice( face_list )
 
-    st.image('8dice_{num}.png'.format( num = face_dic[st.session_state.face_num] ) )
+    st.image('8dice_{num}.png'.format( num = face_dic[st.session_state.face_num_02] ) )
 
-    st.write("出目は「　" + str(face_dic[st.session_state.face_num]) + "　」でした。")
-    st.write("出目が「　" + str(face_dic[st.session_state.face_num]) + "　」なので、サイコロの種類は「　" + str(st.session_state.face_num) + "　」面体です。")
-    st.sidebar.write("サイコロの種類： " + str(st.session_state.face_num) + " 面体")
+    st.write("出目は「　" + str(face_dic[st.session_state.face_num_02]) + "　」でした。")
+    st.write("出目が「　" + str(face_dic[st.session_state.face_num_02]) + "　」なので、サイコロの種類は「　" + str(st.session_state.face_num_02) + "　」面体です。")
+    st.sidebar.write("サイコロの種類： " + str(st.session_state.face_num_02) + " 面体")
 
     st.write("")
 
-    st.write("あなたは「　 {face}　」 面体サイコロを「　 {dice}　」 回振ることになりました。".format( dice = st.session_state.dice_num, face =st.session_state.face_num))
-    yourdice_face_02 = st.session_state.face_num
+    st.write("あなたは「　 {face}　」 面体サイコロを「　 {dice}　」 回振ることになりました。".format( dice = st.session_state.dice_num_02, face =st.session_state.face_num_02))
+    yourdice_face_02 = st.session_state.face_num_02
     #dl_table_on += 1
     space()
 
     ## 3. 被験者が謝礼金決定に用いる赤玉の数を決める -----------------------------------------------------------------------------------------
     st.subheader("3. 被験者が謝礼金決定に用いる赤玉の数を決める")
-    st.write("ボタンを押すと {face} 面体サイコロを {dice} 個振ることができます。".format( dice = st.session_state.dice_num, face =st.session_state.face_num))
+    st.write("ボタンを押すと {face} 面体サイコロを {dice} 個振ることができます。".format( dice = st.session_state.dice_num_02, face =st.session_state.face_num_02))
 
 
-    if 'sum_value' not in st.session_state:
-        st.session_state.sum_value = 0
+    if 'sum_value_02' not in st.session_state:
+        st.session_state.sum_value_02 = 0
 
     sum_value_button = st.button('（第二部）赤い玉の決定')
 
-    if sum_value_button and st.session_state.sum_value == 0:
+    if sum_value_button and st.session_state.sum_value_02 == 0:
         st.write("")
 
-        for i in range(st.session_state.dice_num):
-            a = dice(st.session_state.face_num)
+        for i in range(st.session_state.dice_num_02):
+            a = dice(st.session_state.face_num_02)
             your_sum += a
             st.write("{i} 個目：　出目は「　{a}　」でした。　現在の合計は「　{your_sum}　」です。".format( i = i+1, a=a, your_sum = your_sum ))
             time.sleep(0.5)
-            if i == (st.session_state.dice_num - 1):
+            if i == (st.session_state.dice_num_02 - 1):
                 st.write("全てのサイコロを振り終わりました。")
 
-        st.session_state.sum_value = your_sum
+        st.session_state.sum_value_02 = your_sum
         st.write("")
 
-        st.write("{face} 面体サイコロを {dice} 個振った結果、出目の合計は「　".format( dice = st.session_state.dice_num, face =st.session_state.face_num) + str(st.session_state.sum_value)+ "　」でした。")
+        st.write("{face} 面体サイコロを {dice} 個振った結果、出目の合計は「　".format( dice = st.session_state.dice_num_02, face =st.session_state.face_num_02) + str(st.session_state.sum_value_02)+ "　」でした。")
         st.write("謝礼金を決定するために用いる赤い玉の数を算出します。")
         time.sleep(1.0)
     space()
 
-    red_balls_num = get_value( st.session_state.sum_value )
+    red_balls_num_01 = get_value( st.session_state.sum_value_02 )
 
-    if red_balls_num !=0:
-        st.header("赤い玉の数は「　" + str(red_balls_num) + "　」個となりました。")
-        st.sidebar.write("赤い玉の数: " + str(red_balls_num) + " 個")
+    if red_balls_num_01 !=0:
+        st.header("赤い玉の数は「　" + str(red_balls_num_01) + "　」個となりました。")
+        st.sidebar.write("赤い玉の数: " + str(red_balls_num_01) + " 個")
         st.sidebar.write("---------------------------")
-        blue_balls_num = 100 - get_value(st.session_state.sum_value)
+        blue_balls_num_01 = 100 - get_value(st.session_state.sum_value_02)
 
         st.write("以上で赤い玉の数を決める作業は終了です。")
         st.write("実験者に赤い玉の数を伝え、謝礼金額の決定に進んで下さい。")
@@ -1268,8 +1268,10 @@ my_large_df = pd.DataFrame({
                     'boxc_dice_face_01': [yourdice_face_01],
                     'boxc_dice_num_02': [yourdice_num_02],
                     'boxc_dice_face_02': [yourdice_face_02],
-                    'red_balls': [red_balls_num],
-                    'blue_balls': [blue_balls_num],
+                    'red_balls_01': [red_balls_num_01],
+                    'blue_balls_01': [blue_balls_num_01],]
+                    'red_balls_02': [red_balls_num_02],
+                    'blue_balls_02': [blue_balls_num_02],
                     'question_01': [your_01],
                     'choice_01': [yourchoice_01],
                     'box_a': [yourbox_A],
