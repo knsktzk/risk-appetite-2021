@@ -925,8 +925,8 @@ ball_color_01_C3r = st.checkbox("第一部 箱C3：取り出した玉の色が�
 ball_color_01_C3b = st.checkbox("第一部 箱C3：取り出した玉の色が「　青　」")
 st.write("")
 
-ball_color_01_Dr = st.checkbox("第一部 箱D：取り出した玉の色が「　赤　」")
-ball_color_01_Db = st.checkbox("第一部 箱D：取り出した玉の色が「　青　」")
+ball_color_01_Dr = st.checkbox("第一部 箱D系：取り出した玉の色が「　赤　」")
+ball_color_01_Db = st.checkbox("第一部 箱D系：取り出した玉の色が「　青　」")
 st.write("")
 
 st.write("第二部")
@@ -1178,7 +1178,7 @@ my_large_df = pd.DataFrame({
 csv = convert_df(my_large_df)
 #st.write(my_large_df)
 space()
-st.subheader("4. 実験結果データのダウンロード")
+st.subheader("3. 実験結果データのダウンロード")
 st.write("以下のボタンを押して実験結果データをダウンロードしてください. ")
 st.write("ダウンロードしたデータの扱いについては, 実験者の指示に従ってください. ")
 st.write("!!注意!! ダウンロードの前に被験者番号が正しく入力されているか確認して下さい. ダウンロードされるファイル名には被験者番号が印字されます. ")
