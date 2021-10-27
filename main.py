@@ -901,74 +901,166 @@ space()
 st.subheader("2. 玉の色の入力")
 st.write("使用した箱の種類と、取り出した玉の色を教えてください")
 st.write("第一部")
-ball_color_01_B1 = st.checkbox("第一部 箱B1：取り出した玉の色が「　赤　」")
-ball_color_01_B2 = st.checkbox("第一部 箱B2：取り出した玉の色が「　赤　」")
-ball_color_01_B3 = st.checkbox("第一部 箱B3：取り出した玉の色が「　赤　」")
-ball_color_01_C1 = st.checkbox("第一部 箱C1：取り出した玉の色が「　赤　」")
-ball_color_01_C2 = st.checkbox("第一部 箱C2：取り出した玉の色が「　赤　」")
-ball_color_01_C3 = st.checkbox("第一部 箱C3：取り出した玉の色が「　赤　」")
-ball_color_01_D = st.checkbox("第一部 箱D：取り出した玉の色が「　赤　」")
+ball_color_01_B1r = st.checkbox("第一部 箱B1：取り出した玉の色が「　赤　」")
+ball_color_01_B1b = st.checkbox("第一部 箱B1：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_01_B2r = st.checkbox("第一部 箱B2：取り出した玉の色が「　赤　」")
+ball_color_01_B2b = st.checkbox("第一部 箱B2：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_01_B3r = st.checkbox("第一部 箱B3：取り出した玉の色が「　赤　」")
+ball_color_01_B3b = st.checkbox("第一部 箱B3：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_01_C1r = st.checkbox("第一部 箱C1：取り出した玉の色が「　赤　」")
+ball_color_01_C1b = st.checkbox("第一部 箱C1：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_01_C2r = st.checkbox("第一部 箱C2：取り出した玉の色が「　赤　」")
+ball_color_01_C2b = st.checkbox("第一部 箱C2：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_01_C3r = st.checkbox("第一部 箱C3：取り出した玉の色が「　赤　」")
+ball_color_01_C3b = st.checkbox("第一部 箱C3：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_01_Dr = st.checkbox("第一部 箱D：取り出した玉の色が「　赤　」")
+ball_color_01_Db = st.checkbox("第一部 箱D：取り出した玉の色が「　青　」")
+st.write()
+
 st.write("第二部")
-ball_color_02_B1 = st.checkbox("第二部 箱B1：取り出した玉の色が「　赤　」")
-ball_color_02_B2 = st.checkbox("第二部 箱B2：取り出した玉の色が「　赤　」")
-ball_color_02_B3 = st.checkbox("第二部 箱B3：取り出した玉の色が「　赤　」")
-ball_color_02_C1 = st.checkbox("第二部 箱C1：取り出した玉の色が「　赤　」")
-ball_color_02_C2 = st.checkbox("第二部 箱C2：取り出した玉の色が「　赤　」")
-ball_color_02_C3 = st.checkbox("第二部 箱C3：取り出した玉の色が「　赤　」")
+ball_color_02_B1r = st.checkbox("第二部 箱B1：取り出した玉の色が「　赤　」")
+ball_color_02_B1b = st.checkbox("第二部 箱B1：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_02_B2r = st.checkbox("第二部 箱B2：取り出した玉の色が「　赤　」")
+ball_color_02_B2b = st.checkbox("第二部 箱B2：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_02_B3r = st.checkbox("第二部 箱B3：取り出した玉の色が「　赤　」")
+ball_color_02_B3b = st.checkbox("第二部 箱B3：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_02_C1r = st.checkbox("第二部 箱C1：取り出した玉の色が「　赤　」")
+ball_color_02_C1b = st.checkbox("第二部 箱C1：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_02_C2r = st.checkbox("第二部 箱C2：取り出した玉の色が「　赤　」")
+ball_color_02_C2b = st.checkbox("第二部 箱C2：取り出した玉の色が「　青　」")
+st.write()
+
+ball_color_02_C3r = st.checkbox("第二部 箱C3：取り出した玉の色が「　赤　」")
+ball_color_02_C3b = st.checkbox("第二部 箱C3：取り出した玉の色が「　青　」")
+st.write()
+
 #no_boxC = st.checkbox("箱C1~C3を使用しなかった場合チェックを入れてください")
-color_01_B1 = "blue"
-color_01_B2 = "blue"
-color_01_B3 = "blue"
-color_01_C1 = "blue"
-color_01_C2 = "blue"
-color_01_C3 = "blue"
-color_01_D = "blue"
-color_02_B1 = "blue"
-color_02_B2 = "blue"
-color_02_B3 = "blue"
-color_02_C1 = "blue"
-color_02_C2 = "blue"
-color_02_C3 = "blue"
+ball_color_01 = ""
+ball_color_02 = ""
+color_01_B1 = ""
+color_01_B2 = ""
+color_01_B3 = ""
+color_01_C1 = ""
+color_01_C2 = ""
+color_01_C3 = ""
+color_01_D = ""
+color_02_B1 = ""
+color_02_B2 = ""
+color_02_B3 = ""
+color_02_C1 = ""
+color_02_C2 = ""
+color_02_C3 = ""
 
 
-if ball_color_01_B1:
+if ball_color_01_B1r:
     color_01_B1 = "red"
     ball_color_01 = color_01_B1
-if ball_color_01_B2:
+if ball_color_01_B1b:
+    color_01_B1 = "blue"
+    ball_color_01 = color_01_B1
+ 
+if ball_color_01_B2r:
     color_01_B2 = "red"
     ball_color_01 = color_01_B2
-if ball_color_01_B3:
+if ball_color_01_B2b:
+    color_01_B2 = "blue"
+    ball_color_01 = color_01_B2
+    
+if ball_color_01_B3r:
     color_01_B3 = "red"
     ball_color_01 = color_01_B3
-if ball_color_01_C1:
+if ball_color_01_B3b:
+    color_01_B3 = "blue"
+    ball_color_01 = color_01_B3
+    
+if ball_color_01_C1r:
     color_01_C1 = "red"
     ball_color_01 = color_01_C1
-if ball_color_01_C2:
+if ball_color_01_C1b:
+    color_01_C1 = "blue"
+    ball_color_01 = color_01_C1
+    
+if ball_color_01_C2r:
     color_01_C2 = "red"
     ball_color_01 = color_01_C2
-if ball_color_01_C3:
+if ball_color_01_C2b:
+    color_01_C2 = "blue"
+    ball_color_01 = color_01_C2
+    
+if ball_color_01_C3r:
     color_01_C3 = "red"
     ball_color_01 = color_01_C3
-if ball_color_01_D:
+if ball_color_01_C3b:
+    color_01_C3 = "blue"
+    ball_color_01 = color_01_C3
+    
+if ball_color_01_Dr:
     color_01_D = "red"
     ball_color_01 = color_01_D
-if ball_color_02_B1:
+if ball_color_01_Db:
+    color_01_D = "blue"
+    ball_color_01 = color_01_D
+    
+if ball_color_02_B1r:
     color_02_B1 = "red"
     ball_color_02 = color_02_B1
-if ball_color_02_B2:
+if ball_color_02_B1b:
+    color_02_B1 = "blue"
+    ball_color_02 = color_02_B1
+    
+if ball_color_02_B2r:
     color_02_B2 = "red"
     ball_color_02 = color_02_B2
-if ball_color_02_B3:
+if ball_color_02_B2b:
+    color_02_B2 = "blue"
+    ball_color_02 = color_02_B2
+    
+if ball_color_02_B3r:
     color_02_B3 = "red"
     ball_color_02 = color_02_B3
-if ball_color_02_C1:
+if ball_color_02_B3b:
+    color_02_B3 = "blue"
+    ball_color_02 = color_02_B3
+    
+if ball_color_02_C1r:
     color_02_C1 = "red"
     ball_color_02 = color_02_C1
-if ball_color_02_C2:
+if ball_color_02_C1b:
+    color_02_C1 = "blue"
+    ball_color_02 = color_02_C1
+    
+if ball_color_02_C2r:
     color_02_C2 = "red"
     ball_color_02 = color_02_C2
-if ball_color_02_C3:
+if ball_color_02_C2b:
+    color_02_C2 = "blue"
+    ball_color_02 = color_02_C2
+    
+if ball_color_02_C3r:
     color_02_C3 = "red"
+    ball_color_02 = color_02_C3
+if ball_color_02_C3b:
+    color_02_C3 = "blue"
     ball_color_02 = color_02_C3
 
 
@@ -1014,16 +1106,16 @@ def calc02(Q_num, ball_color):
         return your_A_price + your_B_price[1] + your_C_price[1]
 
 space()
-st.subheader("3. 謝礼金額の確認")
-reward_on = st.button("謝礼金額を確認する")
-if reward_on:
-    your_reward_01 = calc01(yourchoice_01, ball_color_01)
-    your_reward_02 = int(calc02(your_02, ball_color_02))
-    your_reward_sum = int(your_reward_01 + your_reward_02)
-    st.write("以下があなたの謝礼金額です. ")
-    st.write("第一部の謝礼金：{n} 円".format( n = your_reward_01))
-    st.write("第二部の謝礼金：{n} 円".format(n = your_reward_02))
-    st.write("謝礼金の合計金額：{n} 円".format( n = your_reward_sum))
+#st.subheader("3. 謝礼金額の確認")
+#reward_on = st.button("謝礼金額を確認する")
+#if reward_on:
+    #your_reward_01 = calc01(yourchoice_01, ball_color_01)
+    #your_reward_02 = int(calc02(your_02, ball_color_02))
+    #your_reward_sum = int(your_reward_01 + your_reward_02)
+    #st.write("以下があなたの謝礼金額です. ")
+    #st.write("第一部の謝礼金：{n} 円".format( n = your_reward_01))
+    #st.write("第二部の謝礼金：{n} 円".format(n = your_reward_02))
+    #st.write("謝礼金の合計金額：{n} 円".format( n = your_reward_sum))
 
 
 def convert_df(df):
@@ -1075,9 +1167,9 @@ my_large_df = pd.DataFrame({
                     'ball_color_02_c1': [color_02_C1],
                     'ball_color_02_c2': [color_02_C2],
                     'ball_color_02_c3': [color_02_C3],
-                    'reward_01': [your_reward_01],
-                    'reward_02': [your_reward_02],
-                    'reward_sum': [your_reward_sum],
+                    #'reward_01': [your_reward_01],
+                    #'reward_02': [your_reward_02],
+                    #'reward_sum': [your_reward_sum],
 
                 },
                 #index=[''.format(user_ID = user_ID),]
