@@ -899,17 +899,30 @@ yourchoice_01 = st.text_input("問題番号 {your_01} であなたが選択し�
 space()
 
 st.subheader("2. 玉の色の入力")
-st.write("箱C1~C3から取り出した玉の色を教えてください")
-ball_color_01 = st.checkbox("第一部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
-ball_color_02 = st.checkbox("第二部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
-ball_color_02_B1 = st.checkbox("第二部 箱B1：取り出した玉の色が「　赤　」")
-ball_color_02_B2 = st.checkbox("第二部 箱B2：取り出した玉の色が「　赤　」")
-ball_color_02_B3 = st.checkbox("第二部 箱B3：取り出した玉の色が「　赤　」")
-ball_color_02_C1 = st.checkbox("第二部 箱C1：取り出した玉の色が「　赤　」")
-ball_color_02_C2 = st.checkbox("第二部 箱C2：取り出した玉の色が「　赤　」")
-ball_color_02_C3 = st.checkbox("第二部 箱C3：取り出した玉の色が「　赤　」")
+st.write("使用した箱の種類と、取り出した玉の色を教えてください")
+st.write("第一部")
+ball_color_01_B1 = st.checkbox("箱B1：取り出した玉の色が「　赤　」")
+ball_color_01_B2 = st.checkbox("箱B2：取り出した玉の色が「　赤　」")
+ball_color_01_B3 = st.checkbox("箱B3：取り出した玉の色が「　赤　」")
+ball_color_01_C1 = st.checkbox("箱C1：取り出した玉の色が「　赤　」")
+ball_color_01_C2 = st.checkbox("箱C2：取り出した玉の色が「　赤　」")
+ball_color_01_C3 = st.checkbox("箱C3：取り出した玉の色が「　赤　」")
+ball_color_01_D = st.checkbox("箱D：取り出した玉の色が「　赤　」")
+st.write("第二部")
+ball_color_02_B1 = st.checkbox("箱B1：取り出した玉の色が「　赤　」")
+ball_color_02_B2 = st.checkbox("箱B2：取り出した玉の色が「　赤　」")
+ball_color_02_B3 = st.checkbox("箱B3：取り出した玉の色が「　赤　」")
+ball_color_02_C1 = st.checkbox("箱C1：取り出した玉の色が「　赤　」")
+ball_color_02_C2 = st.checkbox("箱C2：取り出した玉の色が「　赤　」")
+ball_color_02_C3 = st.checkbox("箱C3：取り出した玉の色が「　赤　」")
 #no_boxC = st.checkbox("箱C1~C3を使用しなかった場合チェックを入れてください")
-color_01 = "blue"
+color_01_B1 = "blue"
+color_01_B2 = "blue"
+color_01_B3 = "blue"
+color_01_C1 = "blue"
+color_01_C2 = "blue"
+color_01_C3 = "blue"
+color_01_D = "blue"
 color_02_B1 = "blue"
 color_02_B2 = "blue"
 color_02_B3 = "blue"
@@ -917,20 +930,46 @@ color_02_C1 = "blue"
 color_02_C2 = "blue"
 color_02_C3 = "blue"
 
-if ball_color_01:
-    color_01 = "red"
+
+if ball_color_01_B1:
+    color_01_B1 = "red"
+    ball_color_01 = color_01_B1
+if ball_color_01_B2:
+    color_01_B2 = "red"
+    ball_color_01 = color_01_B2
+if ball_color_01_B3:
+    color_01_B3 = "red"
+    ball_color_01 = color_01_B3
+if ball_color_01_C1:
+    color_01_C1 = "red"
+    ball_color_01 = color_01_C1
+if ball_color_01_C2:
+    color_01_C2 = "red"
+    ball_color_01 = color_01_C2
+if ball_color_01_C3:
+    color_01_C3 = "red"
+    ball_color_01 = color_01_C3
+if ball_color_01_D:
+    color_01_D = "red"
+    ball_color_01 = color_01_D
 if ball_color_02_B1:
     color_02_B1 = "red"
+    ball_color_02 = color_02_B1
 if ball_color_02_B2:
     color_02_B2 = "red"
+    ball_color_02 = color_02_B2
 if ball_color_02_B3:
     color_02_B3 = "red"
+    ball_color_02 = color_02_B3
 if ball_color_02_C1:
     color_02_C1 = "red"
+    ball_color_02 = color_02_C1
 if ball_color_02_C2:
     color_02_C2 = "red"
+    ball_color_02 = color_02_C2
 if ball_color_02_C3:
     color_02_C3 = "red"
+    ball_color_02 = color_02_C3
 
 
 def calc01(yourchoice_01, ball_color):
@@ -1022,7 +1061,14 @@ my_large_df = pd.DataFrame({
                     'stock_c1a': [yourstock_C1],
                     'stock_c2a': [yourstock_C2],
                     'stock_c3a': [yourstock_C3],
-                    'ball_color_01': [color_01],
+                    'ball_color_01_b1': [color_01_B1],
+                    'ball_color_01_b2': [color_01_B2],
+                    'ball_color_01_b3': [color_01_B3],
+                    'ball_color_01_c1': [color_01_C1],
+                    'ball_color_01_c2': [color_01_C2],
+                    'ball_color_01_c3': [color_01_C3],
+                    'ball_color_01_d': [color_01_D],
+    
                     'ball_color_02_b1': [color_02_B1],
                     'ball_color_02_b2': [color_02_B2],
                     'ball_color_02_b3': [color_02_B3],
