@@ -813,7 +813,7 @@ if cBox_check_01 ==1:
     if 'dice_num' not in st.session_state:
         st.session_state.dice_num = 0
 
-    dice_num_button = st.button('サイコロを振る（サイコロの数の決定）')
+    dice_num_button = st.button('（第一部）サイコロの数の決定')
 
     if dice_num_button and st.session_state.dice_num == 0:
 
@@ -838,7 +838,7 @@ if cBox_check_01 ==1:
     if 'face_num' not in st.session_state:
         st.session_state.face_num = 0
 
-    face_num_button = st.button('サイコロを振る（サイコロの面体の決定）')
+    face_num_button = st.button('（第一部）サイコロの面体の決定')
 
     if face_num_button and st.session_state.face_num == 0:
 
@@ -865,7 +865,7 @@ if cBox_check_01 ==1:
     if 'sum_value' not in st.session_state:
         st.session_state.sum_value = 0
 
-    sum_value_button = st.button('サイコロを振る（赤い玉の決定）')
+    sum_value_button = st.button('（第一部）赤い玉の決定')
 
     if sum_value_button and st.session_state.sum_value == 0:
         st.write("")
@@ -944,7 +944,7 @@ if cBox_check_02 ==1:
     if 'dice_num' not in st.session_state:
         st.session_state.dice_num = 0
 
-    dice_num_button = st.button('サイコロを振る（サイコロの数の決定）')
+    dice_num_button = st.button('（第二部）サイコロの数の決定')
 
     if dice_num_button and st.session_state.dice_num == 0:
 
@@ -969,7 +969,7 @@ if cBox_check_02 ==1:
     if 'face_num' not in st.session_state:
         st.session_state.face_num = 0
 
-    face_num_button = st.button('サイコロを振る（サイコロの面体の決定）')
+    face_num_button = st.button('（第二部）サイコロの面体の決定')
 
     if face_num_button and st.session_state.face_num == 0:
 
@@ -996,7 +996,7 @@ if cBox_check_02 ==1:
     if 'sum_value' not in st.session_state:
         st.session_state.sum_value = 0
 
-    sum_value_button = st.button('サイコロを振る（赤い玉の決定）')
+    sum_value_button = st.button('（第二部）赤い玉の決定')
 
     if sum_value_button and st.session_state.sum_value == 0:
         st.write("")
