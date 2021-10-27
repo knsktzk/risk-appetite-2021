@@ -902,16 +902,36 @@ st.subheader("2. 玉の色の入力")
 st.write("箱C1~C3から取り出した玉の色を教えてください")
 ball_color_01 = st.checkbox("第一部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
 ball_color_02 = st.checkbox("第二部：取り出した玉の色が「　赤　」の場合チェックを入れてください")
-no_boxC = st.checkbox("箱C1~C3を使用しなかった場合チェックを入れてください")
+ball_color_02_B1 = st.checkbox("第二部 箱B1：取り出した玉の色が「　赤　」")
+ball_color_02_B2 = st.checkbox("第二部 箱B2：取り出した玉の色が「　赤　」")
+ball_color_02_B3 = st.checkbox("第二部 箱B3：取り出した玉の色が「　赤　」")
+ball_color_02_C1 = st.checkbox("第二部 箱C1：取り出した玉の色が「　赤　」")
+ball_color_02_C2 = st.checkbox("第二部 箱C2：取り出した玉の色が「　赤　」")
+ball_color_02_C3 = st.checkbox("第二部 箱C3：取り出した玉の色が「　赤　」")
+#no_boxC = st.checkbox("箱C1~C3を使用しなかった場合チェックを入れてください")
 color_01 = "blue"
-color_02 = "blue"
+color_02_B1 = "blue"
+color_02_B2 = "blue"
+color_02_B3 = "blue"
+color_02_C1 = "blue"
+color_02_C2 = "blue"
+color_02_C3 = "blue"
+
 if ball_color_01:
     color_01 = "red"
-if ball_color_02:
-    color_02 = "red"
-if no_boxC:
-    color_01 = ""
-    color_02 = ""
+if ball_color_02_B1:
+    color_02_B1 = "red"
+if ball_color_02_B2:
+    color_02_B2 = "red"
+if ball_color_02_B3:
+    color_02_B3 = "red"
+if ball_color_02_C1:
+    color_02_C1 = "red"
+if ball_color_02_C2:
+    color_02_C2 = "red"
+if ball_color_02_C3:
+    color_02_C3 = "red"
+
 
 def calc01(yourchoice_01, ball_color):
     if yourchoice_01 == "イ" or yourchoice_01 == "エ" or yourchoice_01 == "カ":
@@ -979,8 +999,6 @@ my_large_df = pd.DataFrame({
                     'dice_face': [yourdice_face],
                     'red_balls': [red_balls_num],
                     'blue_balls': [blue_balls_num],
-                    'ball_color_01': [color_01],
-                    'ball_color_02': [color_02],
                     'question_01': [your_01],
                     'choice_01': [yourchoice_01],
                     'box_a': [yourbox_A],
@@ -1004,6 +1022,13 @@ my_large_df = pd.DataFrame({
                     'stock_c1a': [yourstock_C1],
                     'stock_c2a': [yourstock_C2],
                     'stock_c3a': [yourstock_C3],
+                    'ball_color_01': [color_01],
+                    'ball_color_02_b1': [color_02_B1],
+                    'ball_color_02_b2': [color_02_B2],
+                    'ball_color_02_b3': [color_02_B3],
+                    'ball_color_02_c1': [color_02_C1],
+                    'ball_color_02_c2': [color_02_C2],
+                    'ball_color_02_c3': [color_02_C3],
                     'reward_01': [your_reward_01],
                     'reward_02': [your_reward_02],
                     'reward_sum': [your_reward_sum],
