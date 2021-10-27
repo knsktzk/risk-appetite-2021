@@ -903,56 +903,56 @@ st.write("使用した箱の種類と、取り出した玉の色を教えてく�
 st.write("第一部")
 ball_color_01_B1r = st.checkbox("第一部 箱B1：取り出した玉の色が「　赤　」")
 ball_color_01_B1b = st.checkbox("第一部 箱B1：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_01_B2r = st.checkbox("第一部 箱B2：取り出した玉の色が「　赤　」")
 ball_color_01_B2b = st.checkbox("第一部 箱B2：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_01_B3r = st.checkbox("第一部 箱B3：取り出した玉の色が「　赤　」")
 ball_color_01_B3b = st.checkbox("第一部 箱B3：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_01_C1r = st.checkbox("第一部 箱C1：取り出した玉の色が「　赤　」")
 ball_color_01_C1b = st.checkbox("第一部 箱C1：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_01_C2r = st.checkbox("第一部 箱C2：取り出した玉の色が「　赤　」")
 ball_color_01_C2b = st.checkbox("第一部 箱C2：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_01_C3r = st.checkbox("第一部 箱C3：取り出した玉の色が「　赤　」")
 ball_color_01_C3b = st.checkbox("第一部 箱C3：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_01_Dr = st.checkbox("第一部 箱D：取り出した玉の色が「　赤　」")
 ball_color_01_Db = st.checkbox("第一部 箱D：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 st.write("第二部")
 ball_color_02_B1r = st.checkbox("第二部 箱B1：取り出した玉の色が「　赤　」")
 ball_color_02_B1b = st.checkbox("第二部 箱B1：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_02_B2r = st.checkbox("第二部 箱B2：取り出した玉の色が「　赤　」")
 ball_color_02_B2b = st.checkbox("第二部 箱B2：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_02_B3r = st.checkbox("第二部 箱B3：取り出した玉の色が「　赤　」")
 ball_color_02_B3b = st.checkbox("第二部 箱B3：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_02_C1r = st.checkbox("第二部 箱C1：取り出した玉の色が「　赤　」")
 ball_color_02_C1b = st.checkbox("第二部 箱C1：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_02_C2r = st.checkbox("第二部 箱C2：取り出した玉の色が「　赤　」")
 ball_color_02_C2b = st.checkbox("第二部 箱C2：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 ball_color_02_C3r = st.checkbox("第二部 箱C3：取り出した玉の色が「　赤　」")
 ball_color_02_C3b = st.checkbox("第二部 箱C3：取り出した玉の色が「　青　」")
-st.write()
+st.write("")
 
 #no_boxC = st.checkbox("箱C1~C3を使用しなかった場合チェックを入れてください")
 ball_color_01 = ""
