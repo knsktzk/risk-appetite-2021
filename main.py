@@ -863,7 +863,7 @@ if cBox_check_01 ==1:
 
 
     if 'sum_value_01' not in st.session_state:
-        st.session_state.sum_value = 0
+        st.session_state.sum_value_01 = 0
 
     sum_value_button = st.button('（第一部）赤い玉の決定')
 
