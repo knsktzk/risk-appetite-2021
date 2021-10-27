@@ -485,8 +485,8 @@ def stock_C(stock_num, box_num):
         red_price = get_value[0] * price
         blue_price = get_value[1] * price
     
-    global cBox_check
-    cBox_check =1
+    global cBox_check_02
+    cBox_check_02 =1
 
     return red_price, blue_price
 
@@ -682,6 +682,7 @@ def space():
 
 ############################## contents ##############################
 cBox_check_01 = 0
+cBox_check_02 = 0
 dl_table_on = 0
 
 #img = Image.open('image_01.png')
