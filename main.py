@@ -5,6 +5,7 @@ import numpy as np
 import time
 import pandas as pd
 
+st.write("test")
 st.set_page_config(layout="wide")
 
 on = 0
