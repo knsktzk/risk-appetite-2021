@@ -5,7 +5,6 @@ import numpy as np
 import time
 import pandas as pd
 
-st.write("test")
 st.set_page_config(layout="wide")
 
 on = 0
@@ -689,7 +688,7 @@ dl_table_on = 0
 #img = Image.open('image_01.png')
 #st.image(img, use_column_width=True)
 
-st.title("実験　第１部 & 第２部")
+st.title("!!実験　第１部 & 第２部")
 space()
 
 ## 練習ページへのリンク
