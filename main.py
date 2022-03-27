@@ -4,1330 +4,183 @@ import random
 import numpy as np
 import time
 import pandas as pd
+import func as fc
 
-st.set_page_config(layout="wide")
+# Page size
+#st.set_page_config(layout="wide")
 
-on = 0
-Q_num = 0
-yourbox_A = ""
-yourbox_B1 = ""
-yourbox_B2 = ""
-yourbox_B3 = ""
-yourbox_C1 = ""
-yourbox_C2 = ""
-yourbox_C3 = ""
-yourbox_D = ""
-your_01 = ""
-your_choice_01 = 0
-your_02 = ""
-yourstock_A = ""
-yourstock_B1 = ""
-yourstock_B2 = ""
-yourstock_B3 = ""
-yourstock_C1 = ""
-yourstock_C2 = ""
-yourstock_C3 = ""
-your_left = ""
-your_right = ""
-your_choice_01 = ""
-box_D_detail = ""
-yourbox_D1a = ""
-yourbox_D1b = ""
-yourbox_D2a = ""
-yourbox_D2b = ""
-yourbox_D3a = ""
-yourbox_D3b = ""
-red_balls_num = ""
-blue_balls_num =""
-red_balls_num_01 = ""
-blue_balls_num_01 =""
-red_balls_num_02 = ""
-blue_balls_num_02 =""
-your_reward_01=""
-your_reward_02=""
-your_reward_sum=""
-your_A_price=""
-your_B_price=""
-your_C_price=""
 
-### 第一部 ###
-# 箱D
-def box_D(Q_num):
-    
-    dic = {
-      
-    # question 4
-    22: 0, 23: 5, 24: 10, 25: 15, 26: 20, 27: 25, 28: 30, 29: 35, 30: 40, 31: 45, 32: 50, 33: 55, 34: 60, 35: 65, 36: 70, 37: 75, 38: 80, 39: 85, 40: 90, 41: 95, 42: 100,
+# Default values
+Q_num = "-"
+flag = 0
+# Title 
+st.title("実験タイトル")
 
-    # question 5
-    43: 100, 44: 95, 45: 90, 46: 85, 47: 80, 48: 75, 49: 70, 50: 65, 51: 60, 52: 55, 53: 50, 54: 45, 55: 40, 56: 35, 57: 30, 58: 25, 59: 20, 60: 15, 61: 10, 62: 5, 63: 0,
-
-    # question 6
-    64: 0, 65: 5, 66: 10, 67: 15, 68: 20, 69: 25, 70: 30, 71: 35, 72: 40, 73: 45, 74: 50, 75: 55, 76: 60, 77: 65, 78: 70, 79: 75, 80: 80, 81: 85, 82: 90, 83: 95, 84: 100,
-
-    # question 7
-    85: 100, 86: 95, 87: 90, 88: 85, 89: 80, 90: 75, 91: 70, 92: 65, 93: 60, 94: 55, 95: 50, 96: 45, 97: 40, 98: 35, 99: 30, 100: 25, 101: 20, 102: 15, 103: 10, 104: 5, 105: 0,
-
-    # question 8
-    106: 0, 107: 5, 108: 10, 109: 15, 110: 20, 111: 25, 112: 30, 113: 35, 114: 40, 115: 45, 116: 50, 117: 55, 118: 60, 119: 65, 120: 70, 121: 75, 122: 80, 123: 85, 124: 90, 125: 95, 126: 100, 
-
-    # question 9
-    127: 100, 128: 95, 129: 90, 130: 85, 131: 80, 132: 75, 133: 70, 134: 65, 135: 60, 136: 55, 137: 50, 138: 45, 139: 40, 140: 35, 141: 30, 142: 25, 143: 20, 144: 15, 145: 10, 146: 5, 147: 0,
-    
-    }
-    
-    # ball num
-    red = dic[Q_num]
-    blue = 100 - red
-    
-    # return
-    output_text = "箱Dには赤の玉が {red} 個，青の玉が {blue} 個入っています．".format( red = red, blue = blue)
-    st.write( output_text )
-
-
-def your_choice_01(Q_num):
-
-    global your_choice_01
-    global your_left
-    global your_right
-
-    if 1 <= Q_num <= 5:
-        your_left = st.checkbox('ア')
-        your_right = st.checkbox('イ')
-
-        if your_left:
-            your_choice_01 = 'ア'
-        elif your_right:
-            your_choice_01 = 'イ'
-
-    elif 6 <= Q_num <= 12:
-        your_left = st.checkbox('ウ')
-        your_right = st.checkbox('エ')
-
-        if your_left:
-            your_choice_01 = 'ウ'
-        elif your_right:
-            your_choice_01 = 'エ'
-
-    elif 13 <= Q_num <= 21:
-        your_left = st.checkbox('オ')
-        your_right = st.checkbox('カ')
-
-        if your_left:
-            your_choice_01 = 'オ'
-        elif your_right:
-            your_choice_01 = 'カ'
-
-    elif 22 <= Q_num <= 42:
-        your_left = st.checkbox('キ')
-        your_right = st.checkbox('ク')
-
-        if your_left:
-            your_choice_01 = 'キ'
-        elif your_right:
-            your_choice_01 = 'ク'
-
-    elif 43 <= Q_num <= 63:
-        your_left = st.checkbox('ケ')
-        your_right = st.checkbox('コ')
-
-        if your_left:
-            your_choice_01 = 'ケ'
-        elif your_right:
-            your_choice_01 = 'コ'
-
-    elif 64 <= Q_num <= 84:
-        your_left = st.checkbox('サ')
-        your_right = st.checkbox('シ')
-
-        if your_left:
-            your_choice_01 = 'サ'
-        elif your_right:
-            your_choice_01 = 'シ'
-
-    elif 85 <= Q_num <= 105:
-        your_left = st.checkbox('ス')
-        your_right = st.checkbox('セ')
-
-        if your_left:
-            your_choice_01 = 'ス'
-        elif your_right:
-            your_choice_01 = 'セ'
-
-    elif 106 <= Q_num <= 126:
-        your_left = st.checkbox('ソ')
-        your_right = st.checkbox('タ')
-
-        if your_left:
-            your_choice_01 = 'ソ'
-        elif your_right:
-            your_choice_01 = 'タ'
-
-    elif 127 <= Q_num <= 147:
-        your_left = st.checkbox('チ')
-        your_right = st.checkbox('ツ')
-
-        if your_left:
-            your_choice_01 = 'チ'
-        elif your_right:
-            your_choice_01 = 'ツ'
-
-    return your_choice_01
-
-
-# 質問1~3
-def question_AB(Q_num, Q_data, dic):
-    
-    # stock value
-    stock_A = 10
-    stock_B_red = Q_data[0]
-    stock_B_blue = Q_data[1]
-    num = 200
-    
-    #output text
-    global a_red
-    global a_blue
-    global i
-    a_red = num * stock_B_red
-    a_blue = num * stock_B_blue
-    i = dic[Q_num] * stock_A
-
-    st.write("【あなたの回答が  {left_choice} の場合】".format(left_choice = Q_data[3]))
-    st.write("箱B{box_num}から玉を一つ取り出します．".format(box_num = Q_data[2]))
-    st.write("赤の玉出た場合の謝礼金： {a_red} 円".format(a_red = a_red))
-    st.write("青の玉出た場合の謝礼金： {a_blue} 円".format(a_blue = a_blue))
-    st.write("【あなたの回答が  {right_choice} の場合】".format(right_choice = Q_data[4]))
-    st.write("{i} 円".format(i = i,))
-
-    st.sidebar.write("第一部問題番号：【{Q_num}】".format(Q_num = Q_num))
-    st.sidebar.write("【あなたの回答が  {left_choice} の場合】".format(left_choice = Q_data[3]))
-    st.sidebar.write("使用する箱：箱B{box_num}".format(box_num = Q_data[2]))
-    st.sidebar.write("赤の玉出た場合の謝礼金： {a_red} 円".format(a_red = a_red))
-    st.sidebar.write("青の玉出た場合の謝礼金： {a_blue} 円".format(a_blue = a_blue))
-    st.sidebar.write("【あなたの回答が  {right_choice} の場合】".format(right_choice = Q_data[4]))
-    st.sidebar.write("{i} 円".format(i = i,))
-    st.sidebar.write("---------------------------")
-
-    global your_01
-    global yourbox_A
-    global yourbox_B1
-    global yourbox_B2
-    global yourbox_B3
-    
-
-    your_01 = Q_num
-    yourbox_A = 1
-    if Q_data[2] == 1:
-        yourbox_B1 = 1
-    elif Q_data[2] == 2:
-        yourbox_B2 = 1
-    elif Q_data[2] == 3:
-        yourbox_B3 = 1
-
-
-# 質問4~9
-def question_CD(Q_num, Q_data):
-    
-    # stock value
-    global box_D_detail
-    num = 200
-
-    global C_red
-    global C_blue
-    global D_red
-    global D_blue
-    C_red = Q_data[0] * num
-    C_blue = Q_data[1] * num
-    D_red = Q_data[2] * num
-    D_blue = Q_data[3] * num
-    
-    #output text
-    st.write("{Q_num} が選ばれました．".format(Q_num = Q_num))
-
-
-    st.write("【あなたの回答が  {left_choice} の場合】".format(left_choice = Q_data[5]))
-    st.write("箱C{box_num}から玉を一つ取り出します．".format(box_num = Q_data[4],))
-    st.write("赤の玉出た場合の謝礼金： {C_red} 円".format(C_red = C_red))
-    st.write("青の玉出た場合の謝礼金： {C_blue} 円".format(C_blue = C_blue))
-    st.write("")
-    st.write("【あなたの回答が  {right_choice} の場合】".format(right_choice = Q_data[6]))
-    st.write("箱D{n}{l}から玉を一つ取り出します．".format(n = Q_data[7], l = Q_data[8]))
-    box_D(Q_num)
-    st.write("赤の玉が出た場合： {D_red} 円".format(D_red = D_red))
-    st.write("青の玉が出た場合： {D_blue} 円".format(D_blue = D_blue))
-    
-    st.sidebar.write("第一部問題番号：【{Q_num}】".format(Q_num = Q_num))
-    st.sidebar.write("【あなたの回答が  {left_choice} の場合】".format(left_choice = Q_data[5]))
-    st.sidebar.write("使用する箱：箱C{box_num}".format(box_num = Q_data[4],))
-    st.sidebar.write("赤の玉出た場合の謝礼金： {C_red} 円".format(C_red = C_red))
-    st.sidebar.write("青の玉出た場合の謝礼金： {C_blue} 円".format(C_blue = C_blue))
-    st.write("")
-    st.sidebar.write("【あなたの回答が  {right_choice} の場合】".format(right_choice = Q_data[6]))
-    st.sidebar.write("使用する箱：箱D{n}{l}".format(n = Q_data[7], l = Q_data[8]))
-    st.sidebar.write("赤の玉が出た場合： {D_red} 円".format(D_red = D_red))
-    st.sidebar.write("青の玉が出た場合： {D_blue} 円".format(D_blue = D_blue))
-    st.sidebar.write("---------------------------")
-    #box_D_detail = "{n}{l}".format(n = Q_data[7], l = Q_data[8]))
-
-    global your_01
-    global yourbox_D
-    global yourbox_C1
-    global yourbox_C2
-    global yourbox_C3
-    global yourbox_D1a
-    global yourbox_D1b
-    global yourbox_D2a
-    global yourbox_D2b
-    global yourbox_D3a
-    global yourbox_D3b
-
-    your_01 = Q_num
-    yourbox_D = 1
-
-    if Q_data[4] == 1:
-        yourbox_C1 = 1
-    elif Q_data[4] == 2:
-        yourbox_C2 = 1
-    elif Q_data[4] == 3:
-        yourbox_C3 = 1
-
-    if Q_data[7] == 1 and Q_data[8] == "a":
-        yourbox_D1a = 1
-    elif Q_data[7] == 1 and Q_data[8] == "b":
-        yourbox_D1b = 1
-    elif Q_data[7] == 2 and Q_data[8] == "a":
-        yourbox_D2a = 1
-    elif Q_data[7] == 2 and Q_data[8] == "b":
-        yourbox_D2b = 1
-    elif Q_data[7] == 3 and Q_data[8] == "a":
-        yourbox_D3a = 1
-    elif Q_data[7] == 3 and Q_data[8] == "b":
-        yourbox_D3b = 1
-
-    global cBox_check_01
-    cBox_check_01 =1
-
-# select your question number for reward money
-def select():
-    
-    # select your question number for reward money
-    selected_q = random.randint(1, 147)
-    return selected_q
-
-# 質問1~3の分岐
-def process_AB(Q_num):
-    
-    # question(1-3) data = [B_red, B_blue, box number, left choice, right choice]
-    q01_data = [12, 9, 1, "ア", "イ"] 
-    q02_data = [13, 8, 2, "ウ", "エ"] 
-    q03_data = [14, 7, 3, "オ", "カ"] 
-
-    # Dictionary of number of stocks
-    q01_dic = {1:175, 2:185, 3:195, 4:205, 5:215}
-    q02_dic = {6:155, 7:165, 8:175, 9:185, 10:195, 11:205, 12:215, }
-    q03_dic = {13: 135,14: 145,15: 155,16: 165,17: 175,18: 185,19: 195,20: 205,21: 215,}
-    
-    if 1 <= Q_num <= 5: #question 1
-        question_AB(Q_num, q01_data, q01_dic)
-
-    elif 6 <= Q_num <= 12: #question 2
-        question_AB(Q_num, q02_data, q02_dic)
-
-    elif 13 <= Q_num <= 21: #question 3
-        question_AB(Q_num, q03_data, q03_dic)
-
-# 質問4~9の分岐
-def process_CD(Q_num):
-    
-    # question(4-9) data = [C_red, C_blue, D_red, D_blue, box number, left choice, right choice]
-    q04_data = [12, 9, 12, 9, 1, "キ", "ク", 1, "a"]
-    q05_data = [  9, 12, 9, 12, 1, "ケ", "コ", 1, "b"]
-    q06_data = [13, 8, 13, 8, 2, "サ", "シ", 2, "a"]
-    q07_data = [  8, 13, 8, 13, 2, "ス", "セ", 2, "b"]
-    q08_data = [14, 7, 14, 7, 3, "ソ", "タ", 3, "a"]
-    q09_data = [  7, 14, 7, 14, 3, "チ", "ツ", 3, "b"]
-    
-    if 22 <= Q_num <= 42: #question 4
-        question_CD(Q_num, q04_data)
-
-    elif 43 <= Q_num <= 63: #question 5
-        question_CD(Q_num, q05_data)
-
-    elif 64 <= Q_num <= 84: #question 6
-        question_CD(Q_num, q06_data)
-
-    elif 85 <= Q_num <= 105: #question 7
-        question_CD(Q_num, q07_data)
-
-    elif 106 <= Q_num <= 126: #question 8
-        question_CD(Q_num, q08_data)
-
-    elif 127 <= Q_num <= 147: #question 9
-        question_CD(Q_num, q09_data)
-
-# main
-def main(Q_num):
-
-    if Q_num < 22:
-        process_AB(Q_num)
-        
-    elif 22<= Q_num < 148:
-        process_CD(Q_num)
-
-# make space
-def space():
-    for i in range(3):
-        st.write("")
-
-# 被験者情報の入力
-def department(dep_list):
-    user_dep = st.selectbox("学科を選択してください", dep_list)
-    st.sidebar.write("学科: " + user_dep)
-
-# select
-def selection():
-    dice_face = st.empty()
-    count = 30
-    while count > 0:
-        Q_num = random.randint(1, 126)
-        dice_face.text(Q_num)
-        #st.write(dice_face_num)
-        if count < 10:
-            time.sleep(0.5)
-        else:
-            time.sleep(0.1)
-
-        count-=1
-
-    return Q_num
-
-### 第二部 ###
-def selection_02():
-    dice_face = st.empty()
-    count = 30
-    
-    while count > 0:
-        Q_num = random.randint(1, 15)
-        dice_face.text(Q_num)
-
-        if count < 10:
-            time.sleep(0.5)
-        else:
-            time.sleep(0.1)
-
-        count-=1
-    
-    st.write(str(Q_num) + "が選ばれました.")
-    return Q_num
-
-def select_box(Q_num):
-    dic = {
-        
-    1:   [ 'B', 1],
-    2:   [ 'B', 2],
-    3:   [ 'B', 3],
-    4:   [ 'C', 1],
-    5:   [ 'C', 2],
-    6:   [ 'C', 3],
-    7:   [ 'B', 1, 'C', 1,],
-    8:   [ 'B', 1, 'C', 2,],
-    9:   [ 'B', 1, 'C', 3,],
-    10: [ 'B', 2, 'C', 1,],
-    11: [ 'B', 2, 'C', 2,],
-    12: [ 'B', 2, 'C', 3,],
-    13: [ 'B', 3, 'C', 1,],
-    14: [ 'B', 3, 'C', 2,],
-    15: [ 'B', 3, 'C', 3,],
-        
-    }
-    
-    return dic[Q_num]
-
-def stock_A(stock_num):
-    price = 10
-    return stock_num * price
-
-def stock_B(stock_num, box_num):
-    price = 10
-    
-    if box_num == 1:
-        get_value = one(stock_num)
-        red_price = get_value[0] * price
-        blue_price = get_value[1] * price
-
-    elif box_num == 2:
-        get_value = two(stock_num)
-        red_price = get_value[0] * price
-        blue_price = get_value[1] * price
-        
-    elif box_num == 3:
-        get_value = three(stock_num)
-        red_price = get_value[0] * price
-        blue_price = get_value[1] * price
-    
-    return red_price, blue_price
-
-def stock_C(stock_num, box_num):
-    price = 10
-    
-    if box_num == 1:
-        get_value = one(stock_num)
-        red_price = get_value[0] * price
-        blue_price = get_value[1] * price
-
-    elif box_num == 2:
-        get_value = two(stock_num)
-        red_price = get_value[0] * price
-        blue_price = get_value[1] * price
-        
-    elif box_num == 3:
-        get_value = three(stock_num)
-        red_price = get_value[0] * price
-        blue_price = get_value[1] * price
-    
-    global cBox_check_02
-    cBox_check_02 =1
-
-    return red_price, blue_price
-
-
-
-def one(num):
-    #倍率
-    red_multi = 1.2
-    blue_multi = 0.9
-    
-    #金額
-    red_price = num * red_multi
-    blue_price = num * blue_multi
-    
-    return red_price, blue_price
-
-def two(num):
-    #倍率
-    red_multi = 1.3
-    blue_multi = 0.8
-    
-    #金額
-    red_price = num * red_multi
-    blue_price = num * blue_multi
-    
-    return red_price, blue_price
-
-def three(num):
-    #倍率
-    red_multi = 1.4
-    blue_multi = 0.7
-    
-    #金額
-    red_price = num * red_multi
-    blue_price = num * blue_multi
-    
-    return red_price, blue_price
-
-
-def main_02(Q_num, box_info,):
-
-    global your_02
-    global yourstock_A
-    global yourstock_B1
-    global yourstock_B2
-    global yourstock_B3
-    global yourstock_C1
-    global yourstock_C2
-    global yourstock_C3
-    global your_A_price
-    global your_B_price
-    global your_C_price
-
-    st.write()
-
-    def main_02_A(Q_num, your_A, your_A_price):
-        st.write("問題番号：【" + str(Q_num) + "】")
-        st.write("【証券A " + str(your_A) + " 枚】")
-        st.write(str(your_A_price) + "円")
-        st.sidebar.write("第二部問題番号：【" + str(Q_num) + "】")
-        st.sidebar.write("【証券A " + str(your_A) + " 枚】")
-        st.sidebar.write(str(your_A_price) + "円")
-        st.write("")
-    
-    if 1<= Q_num <=3:
-        
-
-        your_A = int(st.text_input('証券Aの購入枚数を入力してください。（0枚の場合は 0 を入力）'))
-        your_A_price = stock_A(your_A)
-        your_B = int(st.text_input("証券B" + str(box_info[1]) + "aの購入枚数を入力してください。（0枚の場合は 0 を入力）"))
-        your_B_price = stock_B(your_B, box_info[1])
-
-        main_02_A(Q_num, your_A, your_A_price)
-        st.write("【証券B" + str(box_info[1]) + "a " + str(your_B) + " 枚】")
-        st.write("箱B" + str(box_info[1]) + " から赤の玉が出た場合：" + str(int(your_B_price[0])) + "円" )
-        st.write("箱B" + str(box_info[1]) + " から青の玉が出た場合：" + str(int(your_B_price[1])) + "円" )
-        st.sidebar.write("【証券B" + str(box_info[1]) + "a " + str(your_B) + " 枚】")
-        st.sidebar.write("赤の玉が出た場合：" + str(int(your_B_price[0])) + "円" )
-        st.sidebar.write("青の玉が出た場合：" + str(int(your_B_price[1])) + "円" )
-        #your_B_price_red = your_B_price[0]
-        #your_B_price_blue = your_B_price[1]
-
-        your_02 = Q_num
-        yourstock_A = your_A
-
-
-        if box_info[1] == 1:
-            yourstock_B1 =your_B
-        elif box_info[1] == 2:
-            yourstock_B2 =your_B
-        elif box_info[1] == 3:
-            yourstock_B3 =your_B
-
-
-    elif 4<= Q_num <=6:
-
-
-
-        your_A = int(st.text_input('証券Aの購入枚数を入力してください。（0枚の場合は 0 を入力）'))
-        your_A_price = stock_A(your_A)
-        your_C = int(st.text_input("証券C" + str(box_info[1]) + "aの購入枚数を入力してください。（0枚の場合は 0 を入力）"))
-        your_C_price = stock_C(your_C, box_info[1]) #箱Cの番号がリスト2番目なのに注意
-
-        main_02_A(Q_num, your_A, your_A_price)
-        st.write("【証券C" + str(box_info[1]) + "a " + str(your_C) + " 枚】")
-        st.write("箱C" + str(box_info[1]) + " から赤の玉が出た場合：" + str(int(your_C_price[0])) + "円" )
-        st.write("箱C" + str(box_info[1]) + " から青の玉が出た場合：" + str(int(your_C_price[1])) + "円" )
-        st.sidebar.write("【証券C" + str(box_info[1]) + "a " + str(your_C) + " 枚】")
-        st.sidebar.write("赤の玉が出た場合：" + str(int(your_C_price[0])) + "円" )
-        st.sidebar.write("青の玉が出た場合：" + str(int(your_C_price[1])) + "円" )
-
-        your_02 = Q_num
-        yourstock_A = your_A
-
-        if box_info[1] == 1:
-            yourstock_C1 =your_C
-        elif box_info[1] == 2:
-            yourstock_C2 =your_C
-        elif box_info[1] == 3:
-            yourstock_C3 =your_C
-       
-        
-    elif 7<= Q_num <=15:
-
-
-        your_A = int(st.text_input('証券Aの購入枚数を入力してください。（0枚の場合は 0 を入力）'))
-        your_A_price = stock_A(your_A)
-        your_B = int(st.text_input("証券B" + str(box_info[1]) + "aの購入枚数を入力してください。（0枚の場合は 0 を入力）"))
-        your_C = int(st.text_input("証券C" + str(box_info[3]) + "aの購入枚数を入力してください。（0枚の場合は 0 を入力）"))
-        your_B_price = stock_B(your_B, box_info[1])
-        your_C_price = stock_C(your_C, box_info[3])
-        
-        main_02_A(Q_num, your_A, your_A_price)
-        st.write("【証券B" + str(box_info[1]) + "a " + str(your_B) + " 枚】")
-        st.write("箱B" + str(box_info[1]) + " から赤の玉が出た場合：" + str(int(your_B_price[0])) + "円" )
-        st.write("箱B" + str(box_info[1]) + " から青の玉が出た場合：" + str(int(your_B_price[1])) + "円" )
-        st.write("")
-        st.write("【証券C" + str(box_info[3]) + "a " + str(your_C) + " 枚】")
-        st.write("箱C" + str(box_info[3]) + " から赤の玉が出た場合：" + str(int(your_C_price[0])) + "円" )
-        st.write("箱C" + str(box_info[3]) + " から青の玉が出た場合：" + str(int(your_C_price[1])) + "円" )
-        st.sidebar.write("【証券B" + str(box_info[1]) + "a " + str(your_B) + " 枚】")
-        st.sidebar.write("赤の玉が出た場合：" + str(int(your_B_price[0])) + "円" )
-        st.sidebar.write("青の玉が出た場合：" + str(int(your_B_price[1])) + "円" )
-        st.sidebar.write("【証券C" + str(box_info[3]) + "a " + str(your_C) + " 枚】")
-        st.sidebar.write("赤の玉が出た場合：" + str(int(your_C_price[0])) + "円" )
-        st.sidebar.write("青の玉が出た場合：" + str(int(your_C_price[1])) + "円" )
-
-        your_02 = Q_num
-        yourstock_A = your_A
-
-        if box_info[1] == 1:
-            yourstock_B1 =your_B
-        elif box_info[1] == 2:
-            yourstock_B2 =your_B
-        elif box_info[1] == 3:
-            yourstock_B3 =your_B
-
-        if box_info[3] == 1:
-            yourstock_C1 =your_C
-        elif box_info[3] == 2:
-            yourstock_C2 =your_C
-        elif box_info[3] == 3:
-            yourstock_C3 =your_C
-
-    st.write("")
-
-## dice
-# Functions
-def dice(input_face_num):
-    if input_face_num == 10:
-        return random.randint(0, 9)
-    else:
-        return random.randint(1, input_face_num)
-
-# Get the number of red balls
-def get_value(sum):
-    if sum < 10:
-        return sum
-    else:
-        if sum % 2 == 0:
-            tens_place = str(sum)[-1]
-            ones_place = str(sum)[-2]
-            return int( tens_place + ones_place )
-        else:
-            tens_place = str(sum)[-2]
-            ones_place = str(sum)[-1]
-            return int( tens_place + ones_place )
-
-# make space
-def space():
-    for i in range(3):
-        st.write("")
-
-############################## contents ##############################
-cBox_check_01 = 0
-cBox_check_02 = 0
-dl_table_on = 0
-
-#img = Image.open('image_01.png')
-#st.image(img, use_column_width=True)
-
-st.title("!!実験　第１部 & 第２部")
-space()
-
-## 練習ページへのリンク
-st.header("【練習ページへのリンク】")
-st.write("https://share.streamlit.io/kt0zuka/train-risk_appetite-2021/main/main.py")
-st.write("")
-
-## 被験者情報の入力
+# Input information about a subject 
 st.header("【被験者情報の入力】")
+
 user_ID = st.text_input("被験者番号を入力してください (半角数字)")
-st.sidebar.write("被験者番号: " + user_ID)
-
 user_name = st.text_input("名前を入力してください")
+
+st.sidebar.write("被験者番号: " + user_ID)
 st.sidebar.write("被験者氏名: " + user_name)
-#st.sidebar.write("---------------------------")
-space()
-
-## 本番
-st.header("【謝礼金の対象となる質問の決定　第一部】")
 
 
+### --- PART 1 --- ###
+st.header("【第一部】")
+st.sidebar.write("【第一部】---------------------------")
+Q_num_1 = "-"
+key = "-"
+reward_01 = 0
 
-space()
+# Decide question number
+if 'Q_num_01' not in st.session_state:
+    st.session_state.Q_num_01 = 0
 
+exp01_buttom = st.button('質問番号の決定（第一部）')
 
-if 'exp01' not in st.session_state:
-    st.session_state.exp01 = 0
+if exp01_buttom and st.session_state.Q_num_01 == 0:
+    st.session_state.Q_num_01 = fc.get_Q_num(1)
 
-exp01_buttom = st.button('決定（第一部）')
+Q_num_1 = st.session_state.Q_num_01
+st.sidebar.write(f"謝礼対象の質問番号: {Q_num_1}")
 
-if exp01_buttom and st.session_state.exp01 == 0:
-    Q_num = selection()
-    st.session_state.exp01 = Q_num
-
-main(st.session_state.exp01)
-space()
-
-## 本番
-st.header("【謝礼金の対象となる質問の決定　第二部】")
-st.write("※エラーが表示される場合がありますが，実験において問題ないため気にせず進めてください．")
-space()
-
-a = 0
-b = 0
-
-if 'exp02' not in st.session_state:
-    st.session_state.exp02 = 0
-
-if 'exp02_box' not in st.session_state:
-    st.session_state.exp02_box = 0
-
-exp02_switch = st.button('決定（第二部）')
-
-if exp02_switch and st.session_state.exp02 == 0:
-    st.session_state.exp02 = selection_02()
-    a +=1
-
-if exp02_switch and st.session_state.exp02_box == 0:
-    st.session_state.exp02_box = select_box(st.session_state.exp02)
-    b +=1
-
-main_02(st.session_state.exp02, st.session_state.exp02_box)
+fc.space()
 
 
-space()
+if st.session_state.Q_num_01:
+    your_choice_dic = fc.get_choices(st.session_state.Q_num_01)
 
-#if cBox_check ==1:
-    #st.write("あなたの謝礼金額の決定には，箱Cを作成する必要があります．")
-    #st.write("リンク先へ進んで，箱C作成へ進んでください．https://share.streamlit.io/kt0zuka/dice/main.py")
+    keys = your_choice_dic.keys()
+    choice_ls = ["選択してください"]
+    for k in keys:
+        choice_ls.append(k)
 
-### dice contents ###
-yourdice_num_01 = 0
-yourdice_num_02 = 0
-yourdice_face_01 = 0
-yourdice_face_02 = 0
-your_sum = 0
+    key = st.selectbox("質問番号「 {}  」でのあなたの回答を選択してください".format(Q_num_1), choice_ls)
 
-if cBox_check_01 ==1:
-    st.sidebar.write("---------------------------")
-    st.sidebar.write("箱C1~C3の作成（第一部）")
-    st.header("【箱C1~C3の作成（第一部）】")
-    st.write("")
-    process_txt = """
-    ### 具体的な流れ
-    #### 1. 被験者が振るサイコロの数を決める: n
-    使用するのは６面体のダイス
-    - 被験者は１〜６個のいずれかの数のサイコロを振ることになる
-    #### 2. 被験者が振るサイコロの面体を決める: m
-    使用するのは８面体のダイス
-    - 出目が１ならば　４面体
-    - 出目が２ならば　６面体
-    - 出目が３ならば　８面体
-    - 出目が４ならば　１０面体
-    - 出目が５ならば　１２面体
-    - 出目が６ならば　２４面体
-    - 出目が７ならば　３０面体
-    - 出目が８ならば　１００面体
-    #### 3. 被験者が謝礼金決定に用いる赤玉の数を決める: Z
-    - m 面体のサイコロを n 個振り、出目の合計を得る
-    - 出目の合計が偶数の場合
-        - 下3桁から3桁目、2桁目の順で数字を読む
-        - 例）428→82
-    - 出目の合計が奇数の場合
-        - 下2桁とする
-        - 例）429→29
-    """
-    st.subheader("＜箱C1~C3の作成・謝礼金の決定について＞")
-    st.write("下記をクリックしてお読みください．")
+    if key != "選択してください":
+        your_choice_num = your_choice_dic[key]
 
-    process = st.expander("具体的な流れ")
-    process.write(process_txt)
-
-    st.write()
-
-    st.subheader("＜赤い玉の数を決める作業＞")
-    st.write("※　各ボタンはそれぞれ１度だけ押すことができます。")
-    st.write("")
-    ## 1. 振るダイスの数を決める -----------------------------------------------------------------------------------------
-    st.subheader("1. 振るサイコロの数を決める")
+        if your_choice_num > 0 and flag == 0:
+            reward_01 = fc.get_reward_01(Q_num_1, your_choice_num)
+            flag +=1
+            pg.main()
 
 
-    if 'dice_num_01' not in st.session_state:
-        st.session_state.dice_num_01 = 0
+st.sidebar.write(f"{Q_num_1} でのあなたの回答: {key}")
+st.sidebar.write(f"{Q_num_1} でのあなたの報酬: {int(reward_01)} 円")
 
-    dice_num_button = st.button('（第一部）サイコロの数の決定')
-
-    if dice_num_button and st.session_state.dice_num_01 == 0:
-
-        st.session_state.dice_num_01 = dice(6)
-
-    st.image('6dice_{num}.png'.format( num = st.session_state.dice_num_01 ) )
-
-    st.write("出目は「　" + str(st.session_state.dice_num_01) + "　」でした。")
-    st.write("あなたが振るサイコロの数は「　" + str(st.session_state.dice_num_01) + "　」個です。")
-    st.sidebar.write("サイコロの数：" + str(st.session_state.dice_num_01) + " 個")
-    yourdice_num_01 = st.session_state.dice_num_01
-    #dl_table_on += 1
-
-    space()
-
-    ## 2. 被験者が振るダイスの面体を決める -----------------------------------------------------------------------------------------
-    st.subheader("2. 被験者が振るサイコロの面体を決める")
-
-    face_list = [4, 6, 8, 10, 12, 24, 30, 100]
-    face_dic = {0:0, 4:1, 6:2, 8:3, 10:4, 12:5, 24:6, 30:7, 100:8}
-
-    if 'face_num_01' not in st.session_state:
-        st.session_state.face_num_01 = 0
-
-    face_num_button = st.button('（第一部）サイコロの面体の決定')
-
-    if face_num_button and st.session_state.face_num_01 == 0:
-
-        st.session_state.face_num_01 = random.choice( face_list )
-
-    st.image('8dice_{num}.png'.format( num = face_dic[st.session_state.face_num_01] ) )
-
-    st.write("出目は「　" + str(face_dic[st.session_state.face_num_01]) + "　」でした。")
-    st.write("出目が「　" + str(face_dic[st.session_state.face_num_01]) + "　」なので、サイコロの種類は「　" + str(st.session_state.face_num_01) + "　」面体です。")
-    st.sidebar.write("サイコロの種類： " + str(st.session_state.face_num_01) + " 面体")
-
-    st.write("")
-
-    st.write("あなたは「　 {face}　」 面体サイコロを「　 {dice}　」 回振ることになりました。".format( dice = st.session_state.dice_num_01, face =st.session_state.face_num_01))
-    yourdice_face_01 = st.session_state.face_num_01
-    #dl_table_on += 1
-    space()
-
-    ## 3. 被験者が謝礼金決定に用いる赤玉の数を決める -----------------------------------------------------------------------------------------
-    st.subheader("3. 被験者が謝礼金決定に用いる赤玉の数を決める")
-    st.write("ボタンを押すと {face} 面体サイコロを {dice} 個振ることができます。".format( dice = st.session_state.dice_num_01, face =st.session_state.face_num_01))
+### --- PART 2 --- ###
+st.header("【第二部】")
+st.sidebar.write("【第二部】---------------------------")
+reward_02 = 0
 
 
-    if 'sum_value_01' not in st.session_state:
-        st.session_state.sum_value_01 = 0
+# Decide question number
+if 'Q_num_02' not in st.session_state:
+    st.session_state.Q_num_02 = 0
 
-    sum_value_button = st.button('（第一部）赤い玉の決定')
+exp02_buttom = st.button('質問番号の決定（第二部）')
 
-    if sum_value_button and st.session_state.sum_value_01 == 0:
-        st.write("")
+if exp02_buttom and st.session_state.Q_num_02 == 0:
+    st.session_state.Q_num_02 = fc.get_Q_num(2)
 
-        for i in range(st.session_state.dice_num_01):
-            a = dice(st.session_state.face_num_01)
-            your_sum += a
-            st.write("{i} 個目：　出目は「　{a}　」でした。　現在の合計は「　{your_sum}　」です。".format( i = i+1, a=a, your_sum = your_sum ))
-            time.sleep(0.5)
-            if i == (st.session_state.dice_num_01 - 1):
-                st.write("全てのサイコロを振り終わりました。")
+Q_num_2 = st.session_state.Q_num_02
+st.sidebar.write(f"謝礼対象の質問番号: {Q_num_2}")
 
-        st.session_state.sum_value_01 = your_sum
-        st.write("")
 
-        st.write("{face} 面体サイコロを {dice} 個振った結果、出目の合計は「　".format( dice = st.session_state.dice_num_01, face =st.session_state.face_num_01) + str(st.session_state.sum_value_01)+ "　」でした。")
-        st.write("謝礼金を決定するために用いる赤い玉の数を算出します。")
-        time.sleep(1.0)
-    space()
+if st.session_state.Q_num_02:
+    stock_A_num, stock_B_num, stock_C_num = 0,0,0
 
-    red_balls_num_01 = get_value( st.session_state.sum_value_01 )
+    # 選ばれた質問に対する証券の枚数を入力
+    if st.session_state.Q_num_02 < 4:
+        stock_A_num  = st.slider('証券Aの枚数', 0, 250, 0)
+        stock_B_num = 250 - stock_A_num
 
-    if red_balls_num_01 !=0:
-        st.header("赤い玉の数は「　" + str(red_balls_num_01) + "　」個となりました。")
-        st.sidebar.write("赤い玉の数: " + str(red_balls_num_01) + " 個")
-        st.sidebar.write("---------------------------")
-        blue_balls_num_01 = 100 - get_value(st.session_state.sum_value_01)
+        st.sidebar.write(f"証券Aの枚数: {stock_A_num}")
+        st.sidebar.write(f"証券Bの枚数: {stock_B_num}")
 
-        st.write("以上で赤い玉の数を決める作業は終了です。")
-        st.write("実験者に赤い玉の数を伝え、謝礼金額の決定に進んで下さい。")
+        df_stock = pd.DataFrame([stock_A_num, stock_B_num,], index = ("証券A", "証券B",), columns=["枚数"])
+        st.table(df_stock)
+
+        reward_02 = 0
+        reward_A = 10 * stock_A_num
+        reward_02 += reward_A
+
+        reward_B = fc.get_reward_B(st.session_state.Q_num_02, stock_B_num)
+        if float(reward_B):
+            reward_02 += reward_B
+
+
+    elif 3 < st.session_state.Q_num_02 and st.session_state.Q_num_02 < 7:
+        stock_A_num  = st.slider('証券Aの枚数', 0, 250, 0)
+        stock_C_num = 250 - stock_A_num    
+
+        st.sidebar.write(f"証券Aの枚数: {stock_A_num}")
+        st.sidebar.write(f"証券Cの枚数: {stock_C_num}")
+
+        df_stock = pd.DataFrame([stock_A_num, stock_C_num], index = ("証券A", "証券C"), columns=["枚数"])
+        st.table(df_stock)
+
+        reward_02 = 0
+        reward_A = 10 * stock_A_num
+        reward_02 += reward_A
+
+        if stock_A_num != 250:
+            red_ball_num = fc.get_red_num_box_C()
+            reward_C = fc.get_reward_C(st.session_state.Q_num_02, stock_C_num, red_ball_num)
+        else:
+            reward_C = 0
+
+        if float(reward_C):
+            reward_02 += reward_C
+
+
+    elif 6 < st.session_state.Q_num_02:
+        stock_A_num  = st.slider('証券Aの枚数', 0, 250, 0)
+        rest_num = 250 - stock_A_num
+
+        if rest_num >0:
+            stock_B_num  = st.slider('証券Bの枚数', 0, rest_num, 0)   
+            stock_C_num = rest_num - stock_B_num
         
-if cBox_check_02 ==1:
-    st.sidebar.write("---------------------------")
-    st.sidebar.write("箱C1~C3の作成（第二部）")
-    st.header("【箱C1~C3の作成（第二部）】")
-    st.write("")
-    process_txt = """
-    ### 具体的な流れ
-    #### 1. 被験者が振るサイコロの数を決める: n
-    使用するのは６面体のダイス
-    - 被験者は１〜６個のいずれかの数のサイコロを振ることになる
-    #### 2. 被験者が振るサイコロの面体を決める: m
-    使用するのは８面体のダイス
-    - 出目が１ならば　４面体
-    - 出目が２ならば　６面体
-    - 出目が３ならば　８面体
-    - 出目が４ならば　１０面体
-    - 出目が５ならば　１２面体
-    - 出目が６ならば　２４面体
-    - 出目が７ならば　３０面体
-    - 出目が８ならば　１００面体
-    #### 3. 被験者が謝礼金決定に用いる赤玉の数を決める: Z
-    - m 面体のサイコロを n 個振り、出目の合計を得る
-    - 出目の合計が偶数の場合
-        - 下3桁から3桁目、2桁目の順で数字を読む
-        - 例）428→82
-    - 出目の合計が奇数の場合
-        - 下2桁とする
-        - 例）429→29
-    """
-    st.subheader("＜箱C1~C3の作成・謝礼金の決定について＞")
-    st.write("下記をクリックしてお読みください．")
+        else: 
+            stock_B_num = 0
+            stock_C_num = 0
 
-    process = st.expander("具体的な流れ")
-    process.write(process_txt)
+        st.sidebar.write(f"証券Aの枚数: {stock_A_num}")
+        st.sidebar.write(f"証券Bの枚数: {stock_B_num}")
+        st.sidebar.write(f"証券Cの枚数: {stock_C_num}")
 
-    st.write()
+        df_stock = pd.DataFrame([stock_A_num, stock_B_num, stock_C_num], index = ("証券A", "証券B", "証券C"), columns=["枚数"])
+        st.table(df_stock)
 
-    st.subheader("＜赤い玉の数を決める作業＞")
-    st.write("※　各ボタンはそれぞれ１度だけ押すことができます。")
-    st.write("")
-    ## 1. 振るダイスの数を決める -----------------------------------------------------------------------------------------
-    st.subheader("1. 振るサイコロの数を決める")
+        reward_02 = 0
+        reward_A = 10 * stock_A_num
+        reward_02 += reward_A
 
 
-    if 'dice_num_02' not in st.session_state:
-        st.session_state.dice_num_02 = 0
+        # Reward B
+        if stock_A_num != 250:
+            reward_B = fc.get_reward_B(st.session_state.Q_num_02, stock_B_num)
 
-    dice_num_button = st.button('（第二部）サイコロの数の決定')
+        else:
+            reward_B = 0
 
-    if dice_num_button and st.session_state.dice_num_02 == 0:
+        if float(reward_B):
+            reward_02 += reward_B
 
-        st.session_state.dice_num_02 = dice(6)
+        # Reward C
+        if (stock_A_num + stock_B_num) != 250:
+            red_ball_num = fc.get_red_num_box_C()
+            reward_C = fc.get_reward_C(st.session_state.Q_num_02, stock_C_num, red_ball_num)
 
-    st.image('6dice_{num}.png'.format( num = st.session_state.dice_num_02 ) )
+        else:
+            reward_C = 0
 
-    st.write("出目は「　" + str(st.session_state.dice_num_02) + "　」でした。")
-    st.write("あなたが振るサイコロの数は「　" + str(st.session_state.dice_num_02) + "　」個です。")
-    st.sidebar.write("サイコロの数：" + str(st.session_state.dice_num_02) + " 個")
-    yourdice_num_02 = st.session_state.dice_num_02
-    #dl_table_on += 1
+        if float(reward_C):
+            reward_02 += reward_C
 
-    space()
 
-    ## 2. 被験者が振るダイスの面体を決める -----------------------------------------------------------------------------------------
-    st.subheader("2. 被験者が振るサイコロの面体を決める")
 
-    face_list = [4, 6, 8, 10, 12, 24, 30, 100]
-    face_dic = {0:0, 4:1, 6:2, 8:3, 10:4, 12:5, 24:6, 30:7, 100:8}
-
-    if 'face_num_02' not in st.session_state:
-        st.session_state.face_num_02 = 0
-
-    face_num_button = st.button('（第二部）サイコロの面体の決定')
-
-    if face_num_button and st.session_state.face_num_02 == 0:
-
-        st.session_state.face_num_02 = random.choice( face_list )
-
-    st.image('8dice_{num}.png'.format( num = face_dic[st.session_state.face_num_02] ) )
-
-    st.write("出目は「　" + str(face_dic[st.session_state.face_num_02]) + "　」でした。")
-    st.write("出目が「　" + str(face_dic[st.session_state.face_num_02]) + "　」なので、サイコロの種類は「　" + str(st.session_state.face_num_02) + "　」面体です。")
-    st.sidebar.write("サイコロの種類： " + str(st.session_state.face_num_02) + " 面体")
-
-    st.write("")
-
-    st.write("あなたは「　 {face}　」 面体サイコロを「　 {dice}　」 回振ることになりました。".format( dice = st.session_state.dice_num_02, face =st.session_state.face_num_02))
-    yourdice_face_02 = st.session_state.face_num_02
-    #dl_table_on += 1
-    space()
-
-    ## 3. 被験者が謝礼金決定に用いる赤玉の数を決める -----------------------------------------------------------------------------------------
-    st.subheader("3. 被験者が謝礼金決定に用いる赤玉の数を決める")
-    st.write("ボタンを押すと {face} 面体サイコロを {dice} 個振ることができます。".format( dice = st.session_state.dice_num_02, face =st.session_state.face_num_02))
-
-
-    if 'sum_value_02' not in st.session_state:
-        st.session_state.sum_value_02 = 0
-
-    sum_value_button = st.button('（第二部）赤い玉の決定')
-
-    if sum_value_button and st.session_state.sum_value_02 == 0:
-        st.write("")
-
-        for i in range(st.session_state.dice_num_02):
-            a = dice(st.session_state.face_num_02)
-            your_sum += a
-            st.write("{i} 個目：　出目は「　{a}　」でした。　現在の合計は「　{your_sum}　」です。".format( i = i+1, a=a, your_sum = your_sum ))
-            time.sleep(0.5)
-            if i == (st.session_state.dice_num_02 - 1):
-                st.write("全てのサイコロを振り終わりました。")
-
-        st.session_state.sum_value_02 = your_sum
-        st.write("")
-
-        st.write("{face} 面体サイコロを {dice} 個振った結果、出目の合計は「　".format( dice = st.session_state.dice_num_02, face =st.session_state.face_num_02) + str(st.session_state.sum_value_02)+ "　」でした。")
-        st.write("謝礼金を決定するために用いる赤い玉の数を算出します。")
-        time.sleep(1.0)
-    space()
-
-    red_balls_num_01 = get_value( st.session_state.sum_value_02 )
-
-    if red_balls_num_01 !=0:
-        st.header("赤い玉の数は「　" + str(red_balls_num_01) + "　」個となりました。")
-        st.sidebar.write("赤い玉の数: " + str(red_balls_num_01) + " 個")
-        st.sidebar.write("---------------------------")
-        blue_balls_num_01 = 100 - get_value(st.session_state.sum_value_02)
-
-        st.write("以上で赤い玉の数を決める作業は終了です。")
-        st.write("実験者に赤い玉の数を伝え、謝礼金額の決定に進んで下さい。")
-
-space()
-#データ入力
-st.header("【データの出力】")
-st.subheader("1. 第一部の回答の入力")
-st.write("第一部で選ばれた問題は {your_01} でした.".format(your_01 = your_01))
-yourchoice_01 = st.text_input("問題番号 {your_01} であなたが選択した回答を教えてください.（全角カタカナ） ".format(your_01 = your_01))
-space()
-
-st.subheader("2. 玉の色の入力")
-st.write("使用した箱の種類と、取り出した玉の色を教えてください")
-st.write("第一部")
-ball_color_01_B1r = st.checkbox("第一部 箱B1：取り出した玉の色が「　赤　」")
-ball_color_01_B1b = st.checkbox("第一部 箱B1：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_01_B2r = st.checkbox("第一部 箱B2：取り出した玉の色が「　赤　」")
-ball_color_01_B2b = st.checkbox("第一部 箱B2：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_01_B3r = st.checkbox("第一部 箱B3：取り出した玉の色が「　赤　」")
-ball_color_01_B3b = st.checkbox("第一部 箱B3：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_01_C1r = st.checkbox("第一部 箱C1：取り出した玉の色が「　赤　」")
-ball_color_01_C1b = st.checkbox("第一部 箱C1：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_01_C2r = st.checkbox("第一部 箱C2：取り出した玉の色が「　赤　」")
-ball_color_01_C2b = st.checkbox("第一部 箱C2：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_01_C3r = st.checkbox("第一部 箱C3：取り出した玉の色が「　赤　」")
-ball_color_01_C3b = st.checkbox("第一部 箱C3：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_01_Dr = st.checkbox("第一部 箱D系：取り出した玉の色が「　赤　」")
-ball_color_01_Db = st.checkbox("第一部 箱D系：取り出した玉の色が「　青　」")
-st.write("")
-
-st.write("第二部")
-ball_color_02_B1r = st.checkbox("第二部 箱B1：取り出した玉の色が「　赤　」")
-ball_color_02_B1b = st.checkbox("第二部 箱B1：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_02_B2r = st.checkbox("第二部 箱B2：取り出した玉の色が「　赤　」")
-ball_color_02_B2b = st.checkbox("第二部 箱B2：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_02_B3r = st.checkbox("第二部 箱B3：取り出した玉の色が「　赤　」")
-ball_color_02_B3b = st.checkbox("第二部 箱B3：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_02_C1r = st.checkbox("第二部 箱C1：取り出した玉の色が「　赤　」")
-ball_color_02_C1b = st.checkbox("第二部 箱C1：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_02_C2r = st.checkbox("第二部 箱C2：取り出した玉の色が「　赤　」")
-ball_color_02_C2b = st.checkbox("第二部 箱C2：取り出した玉の色が「　青　」")
-st.write("")
-
-ball_color_02_C3r = st.checkbox("第二部 箱C3：取り出した玉の色が「　赤　」")
-ball_color_02_C3b = st.checkbox("第二部 箱C3：取り出した玉の色が「　青　」")
-st.write("")
-
-#no_boxC = st.checkbox("箱C1~C3を使用しなかった場合チェックを入れてください")
-ball_color_01 = ""
-ball_color_02 = ""
-color_01_B1 = ""
-color_01_B2 = ""
-color_01_B3 = ""
-color_01_C1 = ""
-color_01_C2 = ""
-color_01_C3 = ""
-color_01_D = ""
-color_02_B1 = ""
-color_02_B2 = ""
-color_02_B3 = ""
-color_02_C1 = ""
-color_02_C2 = ""
-color_02_C3 = ""
-
-
-if ball_color_01_B1r:
-    color_01_B1 = "red"
-    ball_color_01 = color_01_B1
-if ball_color_01_B1b:
-    color_01_B1 = "blue"
-    ball_color_01 = color_01_B1
- 
-if ball_color_01_B2r:
-    color_01_B2 = "red"
-    ball_color_01 = color_01_B2
-if ball_color_01_B2b:
-    color_01_B2 = "blue"
-    ball_color_01 = color_01_B2
-    
-if ball_color_01_B3r:
-    color_01_B3 = "red"
-    ball_color_01 = color_01_B3
-if ball_color_01_B3b:
-    color_01_B3 = "blue"
-    ball_color_01 = color_01_B3
-    
-if ball_color_01_C1r:
-    color_01_C1 = "red"
-    ball_color_01 = color_01_C1
-if ball_color_01_C1b:
-    color_01_C1 = "blue"
-    ball_color_01 = color_01_C1
-    
-if ball_color_01_C2r:
-    color_01_C2 = "red"
-    ball_color_01 = color_01_C2
-if ball_color_01_C2b:
-    color_01_C2 = "blue"
-    ball_color_01 = color_01_C2
-    
-if ball_color_01_C3r:
-    color_01_C3 = "red"
-    ball_color_01 = color_01_C3
-if ball_color_01_C3b:
-    color_01_C3 = "blue"
-    ball_color_01 = color_01_C3
-    
-if ball_color_01_Dr:
-    color_01_D = "red"
-    ball_color_01 = color_01_D
-if ball_color_01_Db:
-    color_01_D = "blue"
-    ball_color_01 = color_01_D
-    
-if ball_color_02_B1r:
-    color_02_B1 = "red"
-    ball_color_02 = color_02_B1
-if ball_color_02_B1b:
-    color_02_B1 = "blue"
-    ball_color_02 = color_02_B1
-    
-if ball_color_02_B2r:
-    color_02_B2 = "red"
-    ball_color_02 = color_02_B2
-if ball_color_02_B2b:
-    color_02_B2 = "blue"
-    ball_color_02 = color_02_B2
-    
-if ball_color_02_B3r:
-    color_02_B3 = "red"
-    ball_color_02 = color_02_B3
-if ball_color_02_B3b:
-    color_02_B3 = "blue"
-    ball_color_02 = color_02_B3
-    
-if ball_color_02_C1r:
-    color_02_C1 = "red"
-    ball_color_02 = color_02_C1
-if ball_color_02_C1b:
-    color_02_C1 = "blue"
-    ball_color_02 = color_02_C1
-    
-if ball_color_02_C2r:
-    color_02_C2 = "red"
-    ball_color_02 = color_02_C2
-if ball_color_02_C2b:
-    color_02_C2 = "blue"
-    ball_color_02 = color_02_C2
-    
-if ball_color_02_C3r:
-    color_02_C3 = "red"
-    ball_color_02 = color_02_C3
-if ball_color_02_C3b:
-    color_02_C3 = "blue"
-    ball_color_02 = color_02_C3
-
-
-def calc01(yourchoice_01, ball_color):
-    if yourchoice_01 == "イ" or yourchoice_01 == "エ" or yourchoice_01 == "カ":
-        return i
-
-    elif (yourchoice_01 == "ア" or yourchoice_01 == "ウ" or yourchoice_01 == "オ") and ball_color: #red
-        return a_red
-
-    elif yourchoice_01 == "ア" or yourchoice_01 == "ウ" or yourchoice_01 == "オ":
-        return a_blue
-    
-    elif yourchoice_01 in ["キ", "ケ", "サ", "ス", "ソ", "チ"] and ball_color: #red
-        return C_red
-    
-    elif yourchoice_01 in ["キ", "ケ", "サ", "ス", "ソ", "チ"]:
-        return C_blue
-    
-    elif yourchoice_01 in ["ク", "コ", "シ", "セ", "タ", "ツ"] and ball_color: #red
-        return D_red
-
-    elif yourchoice_01 in ["ク", "コ", "シ", "セ", "タ", "ツ"]:
-        return D_blue
-
-def calc02(Q_num, ball_color):
-    if 1<= Q_num <=3 and ball_color:
-        return your_A_price + your_B_price[0]
-
-    elif 1<= Q_num <=3:
-        return your_A_price + your_B_price[1]
-
-    elif 4<= Q_num <=6 and ball_color:
-        return your_A_price + your_C_price[0]
-
-    elif 4<= Q_num <=6:
-        return your_A_price + your_C_price[1]
-
-    elif 7<= Q_num <=15 and ball_color:
-        return your_A_price + your_B_price[0] + your_C_price[0]
-    
-    elif 7<= Q_num <=15:
-        return your_A_price + your_B_price[1] + your_C_price[1]
-
-space()
-#st.subheader("3. 謝礼金額の確認")
-#reward_on = st.button("謝礼金額を確認する")
-#if reward_on:
-    #your_reward_01 = calc01(yourchoice_01, ball_color_01)
-    #your_reward_02 = int(calc02(your_02, ball_color_02))
-    #your_reward_sum = int(your_reward_01 + your_reward_02)
-    #st.write("以下があなたの謝礼金額です. ")
-    #st.write("第一部の謝礼金：{n} 円".format( n = your_reward_01))
-    #st.write("第二部の謝礼金：{n} 円".format(n = your_reward_02))
-    #st.write("謝礼金の合計金額：{n} 円".format( n = your_reward_sum))
-
-
-def convert_df(df):
-    # IMPORTANT: Cache the conversion to prevent computation on every rerun
-    return df.to_csv(encoding = "shift-jis", index=False,)
-
-
-
-my_large_df = pd.DataFrame({
-                    'id': ['{user_ID}'.format(user_ID = user_ID),],
-                    'boxc_dice_num_01': [yourdice_num_01],
-                    'boxc_dice_face_01': [yourdice_face_01],
-                    'boxc_dice_num_02': [yourdice_num_02],
-                    'boxc_dice_face_02': [yourdice_face_02],
-                    'red_balls_01': [red_balls_num_01],
-                    'blue_balls_01': [blue_balls_num_01],
-                    'red_balls_02': [red_balls_num_02],
-                    'blue_balls_02': [blue_balls_num_02],
-                    'question_01': [your_01],
-                    'choice_01': [yourchoice_01],
-                    'box_a': [yourbox_A],
-                    'box_b1': [yourbox_B1],
-                    'box_b2': [yourbox_B2],
-                    'box_b3': [yourbox_B3],
-                    'box_c1': [yourbox_C1],
-                    'box_c2': [yourbox_C2],
-                    'box_c3': [yourbox_C3],
-                    'box_d1a': [yourbox_D1a],
-                    'box_d1b': [yourbox_D1b],
-                    'box_d2a': [yourbox_D2a],
-                    'box_d2b': [yourbox_D2b],
-                    'box_d3a': [yourbox_D3a],
-                    'box_d3b': [yourbox_D3b],
-                    'question_02': [your_02],
-                    'stock_a': [yourstock_A],
-                    'stock_b1': [yourstock_B1],
-                    'stock_b2': [yourstock_B2],
-                    'stock_b3': [yourstock_B3],
-                    'stock_c1a': [yourstock_C1],
-                    'stock_c2a': [yourstock_C2],
-                    'stock_c3a': [yourstock_C3],
-                    'ball_color_01_b1': [color_01_B1],
-                    'ball_color_01_b2': [color_01_B2],
-                    'ball_color_01_b3': [color_01_B3],
-                    'ball_color_01_c1': [color_01_C1],
-                    'ball_color_01_c2': [color_01_C2],
-                    'ball_color_01_c3': [color_01_C3],
-                    'ball_color_01_d': [color_01_D],
-    
-                    'ball_color_02_b1': [color_02_B1],
-                    'ball_color_02_b2': [color_02_B2],
-                    'ball_color_02_b3': [color_02_B3],
-                    'ball_color_02_c1': [color_02_C1],
-                    'ball_color_02_c2': [color_02_C2],
-                    'ball_color_02_c3': [color_02_C3],
-                    #'reward_01': [your_reward_01],
-                    #'reward_02': [your_reward_02],
-                    #'reward_sum': [your_reward_sum],
-
-                },
-                #index=[''.format(user_ID = user_ID),]
-                )
-
-csv = convert_df(my_large_df)
-#st.write(my_large_df)
-space()
-st.subheader("3. 実験結果データのダウンロード")
-st.write("以下のボタンを押して実験結果データをダウンロードしてください. ")
-st.write("ダウンロードしたデータの扱いについては, 実験者の指示に従ってください. ")
-st.write("!!注意!! ダウンロードの前に被験者番号が正しく入力されているか確認して下さい. ダウンロードされるファイル名には被験者番号が印字されます. ")
-
-st.download_button(
-    label="実験データをダウンロード",
-    data=csv,
-    file_name='data_{user_ID}.csv'.format(user_ID = user_ID),
-    mime='text/csv',)
-
+st.sidebar.write(f"{Q_num_2} でのあなたの報酬: {int(reward_02)} 円")
